@@ -14,8 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::any('/teste/search', [ApiController::class, 'search'])->name('teste.search');
-Route::get('/teste', ApiController::class);
+Route::any('/index/search', [ApiController::class, 'search'])->name('index.search');
+Route::get('/index', ApiController::class)->name('index');
+Route::get('/index/{id}', [ApiController::class, 'show'])->name('index.more');
 
 Route::get('/', function () {
     return view('welcome');

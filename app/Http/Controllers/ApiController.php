@@ -11,7 +11,6 @@ class ApiController extends Controller
     public function __invoke()
     {
         $filmes = Http::get("https://api.themoviedb.org/3/discover/movie?api_key={$this->apiKey}&language=pt-BR&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate")->json('results');
-        $filmes = (object)$filmes;
         return view('index', compact('filmes'));
     }
 
@@ -21,4 +20,11 @@ class ApiController extends Controller
         $filmes = Http::get("https://api.themoviedb.org/3/search/movie?api_key={$this->apiKey}&language=pt-BR&query={$pesquisa}&page=1&include_adult=false")->json('results');
         return view('index', compact('filmes'));  
     }
+
+   public function show(Request $request)
+   {
+        $id = $request->id;
+        $url = Http::get("https://api.themoviedb.org/3/movie/{$id}?api_key={$this->apiKey}&language=pt-BR")->json();
+        var_dump("<pre>", $url, "</pre>"); die;
+   }
 }
