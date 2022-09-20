@@ -19,7 +19,7 @@
             <tr style='border: 1px solid black; border-collapsse: collapse;'>
                 <td style='border: 1px solid black; border-collapsse: collapse;'> {{ $filme['vote_average']}} </td>
                 <td style='border: 1px solid black; border-collapsse: collapse;'> {{ $filme['title'] }} </td>
-                <td style='border: 1px solid black; border-collapsse: collapse; text-align: center;' title='Mais Informações obre o filme'> <a href=" {{ route("index.more", ['id' => $filme['id']]) }}"><i class="fas fa-angle-double-right"></i> </a></td>
+                <td style='border: 1px solid black; border-collapsse: collapse; text-align: center;' title='Mais Informações sobre o filme'> <a href=" {{ route("index.more", ['id' => $filme['id']]) }}"><i class="fas fa-angle-double-right"></i> </a></td>
             </tr>
         @endforeach
     </table>
