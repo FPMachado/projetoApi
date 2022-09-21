@@ -9,17 +9,20 @@
     </form>
 
     <h1>Principais Filmes</h1>
-    <table style='border: 1px solid black; border-collapsse: collapse;'>
-        <tr>
-            <th style='border: 1px solid black; border-collapsse: collapse;'>Nota</th>
-            <th style='border: 1px solid black; border-collapsse: collapse;'>Nome</th>
-            <th style='border: 1px solid black; border-collapsse: collapse;' colspan="2">Utilitários</th>
-        </tr>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Nota</th>
+                <th>Nome</th>
+                <th>Utilitários</th>
+            </tr>
+        </thead>
         @foreach ($filmes as $filme)
-            <tr style='border: 1px solid black; border-collapsse: collapse;'>
-                <td style='border: 1px solid black; border-collapsse: collapse;'> {{ $filme['vote_average']}} </td>
-                <td style='border: 1px solid black; border-collapsse: collapse;'> {{ $filme['title'] }} </td>
-                <td style='border: 1px solid black; border-collapsse: collapse; text-align: center;' title='Mais Informações sobre o filme'> <a href=" {{ route("index.more", ['id' => $filme['id']]) }}"><i class="fas fa-angle-double-right"></i> </a></td>
+            <tr>
+                <td> {{ $filme['vote_average']}} </td>
+                <td> {{ $filme['title'] }} </td>
+                <td title='Mais Informações sobre o filme'> <a href=" {{ route("index.more", ['id' => $filme['id']]) }}"><i class="fas fa-angle-double-right"></i> </a></td>
             </tr>
         @endforeach
     </table>
