@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
     <title>Projeto API</title>
+    <link rel="stylesheet" href=" {{ mix('css/app.css') }} ">
 </head>
 <body>
     <div>
