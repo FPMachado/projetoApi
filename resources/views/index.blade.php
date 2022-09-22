@@ -1,22 +1,20 @@
 @extends('templates.padrao')
 
-
 @section('content')
-@if ($errors->any())   
-    @foreach ($errors->all() as $erro)
-        <div class="text-center w-full bg-red-400"> {{$erro}} </div>
-    @endforeach
-@endif
+    @if ($errors->any())   
+        @foreach ($errors->all() as $erro)
+            <div class="text-center w-full bg-red-400 mb-3"> {{$erro}} </div>
+        @endforeach
+    @endif
 
-    <div>
+    <div class="text-right">
         <form action=" {{ route('index.search') }} " method="post">
             @csrf
-            <input type="text" name="pesquisa" placeholder="Digite o nome do filme" value="{{old('pesquisa')}}">
-            <button type="submit" class="bg-cyan-500 text-xl text-white font-[Poppins] duration-500 px-6 py-2 mx-2 hover:bg-cyan-300 rounded">Pesquisar</button>
+            <input class="border border-slate-500 px-6 py-2 mx-4 w-80" type="text" name="pesquisa" placeholder="Digite o nome do filme" value="{{old('pesquisa')}}">
+            <button type="submit" class="bg-cyan-500 text-xl text-white font-sans duration-500 px-6 py-2  mx-4 hover:bg-cyan-300 rounded">Pesquisar</button>
         </form>
     </div>
-
-    
+   
     <h1 class="text-center text-3xl">Principais Novos Filmes</h1>
     <div class='flex p-5 justify-center items-center'>
         <table class="w-full text-sm text-left">

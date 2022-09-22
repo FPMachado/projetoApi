@@ -12,9 +12,9 @@
     <nav class="p-5 bg-white shadow md:flex md:items-center md:justify-between">
         <div class="flex justify-between items-center">
             <a href="{{ route('index') }}">
-                <span class="text-2xl font-[Poppins] cursor-pointer">
+                <span class="hover:text-cyan-500 text-2xl font-sans cursor-pointer">
                     <i class="fas fa-home"></i>
-                    HOME
+                    <label class="font-sans cursor-pointer" for="">HOME</label> 
                 </span>
 
                 <span class="text-3xl cursor-pointer mx-2 md:hidden block">
@@ -27,7 +27,7 @@
                 <a href="" class="text-xl hover:text-cyan-500 duration-500">Documentação</a>
             </li> 
             <li class="mx-4 my-6 md:my-0">
-                <a href="" class="text-xl hover:text-cyan-500 duration-500">Em breve</a>
+                <a href="" class="text-xl hover:text-cyan-500 duration-500">Sobre Mim</a>
             </li> 
             <li class="mx-4 my-6 md:my-0">
                 <a href="" class="text-xl hover:text-cyan-500 duration-500">Em breve</a>
@@ -36,7 +36,7 @@
                 <a href="" class="text-xl hover:text-cyan-500 duration-500">Em breve</a>
             </li> 
 
-            <button class="bg-cyan-500 text-xl text-white font-[Poppins] duration-500 px-6 py-2 mx-4 hover:bg-cyan-300 rounded">
+            <button class="bg-cyan-500 text-xl text-white font-sans duration-500 px-6 py-2 mx-4 hover:bg-cyan-300 rounded">
                 Sair
             </button>
         </ul>
@@ -46,8 +46,6 @@
     <div class="container mx-auto py-8 w-full">
         @yield('content')
     </div>
-
-
 
 </body>
 </html>

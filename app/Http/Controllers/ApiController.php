@@ -37,10 +37,4 @@ class ApiController extends Controller
 
         return view('show', compact('infoFilme', 'poster'));
     }
-
-    public function getGenero(Request $request)
-    {
-        $filmeId = $request->id;
-
-    }
 }
