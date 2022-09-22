@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SearchRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
@@ -15,7 +16,7 @@ class ApiController extends Controller
         return view('index', compact('filmes'));
     }
 
-    public function search(Request $request)
+    public function search(SearchRequest $request)
     {
         $pesquisa = $request->pesquisa;
         $filmes = Http::get("https://api.themoviedb.org/3/search/movie?api_key={$this->apiKey}&language=pt-BR&query={$pesquisa}&page=1&include_adult=false")->json('results');
@@ -35,5 +36,11 @@ class ApiController extends Controller
         $poster ="{$urlBase}". "w300" . "$path";
 
         return view('show', compact('infoFilme', 'poster'));
+    }
+
+    public function getGenero(Request $request)
+    {
+        $filmeId = $request->id;
+
     }
 }

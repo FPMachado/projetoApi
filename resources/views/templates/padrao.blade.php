@@ -14,7 +14,7 @@
             <a href="{{ route('index') }}">
                 <span class="text-2xl font-[Poppins] cursor-pointer">
                     <i class="fas fa-home"></i>
-                    Início
+                    HOME
                 </span>
 
                 <span class="text-3xl cursor-pointer mx-2 md:hidden block">
@@ -24,7 +24,7 @@
         </div>
         <ul class="md:flex md:items-center z-[-1] md:z-auto md:static absolute bg-white w-full left-0 md:w-auto md:py-0 py-4 md:pl-0 pl-7 md:opacity-100 opacity-0 top-[-400] transition-all ease-in duration-500">
             <li class="mx-4 my-6 md:my-0">
-                <a href="" class="text-xl hover:text-cyan-500 duration-500">Em breve</a>
+                <a href="" class="text-xl hover:text-cyan-500 duration-500">Documentação</a>
             </li> 
             <li class="mx-4 my-6 md:my-0">
                 <a href="" class="text-xl hover:text-cyan-500 duration-500">Em breve</a>
@@ -36,14 +36,14 @@
                 <a href="" class="text-xl hover:text-cyan-500 duration-500">Em breve</a>
             </li> 
 
-            <button class="bg-cyan-400 text-xl text-white font-[Poppins] duration-500 px-6 py-2 mx-4 hover:bg-cyan-500 rounded">
+            <button class="bg-cyan-500 text-xl text-white font-[Poppins] duration-500 px-6 py-2 mx-4 hover:bg-cyan-300 rounded">
                 Sair
             </button>
         </ul>
     </nav>
 
 
-    <div class="container mx-auto py-8">
+    <div class="container mx-auto py-8 w-full">
         @yield('content')
     </div>
 
