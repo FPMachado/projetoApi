@@ -43,7 +43,7 @@
     </nav>
 
 
-    <div class="container mx-auto py-8 w-full">
+    <div>
         @yield('content')
     </div>
 

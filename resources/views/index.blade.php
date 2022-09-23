@@ -7,16 +7,16 @@
         @endforeach
     @endif
 
-    <div class="text-right">
-        <form action=" {{ route('index.search') }} " method="post">
-            @csrf
-            <input class="border border-slate-500 px-6 py-2 mx-4 w-80" type="text" name="pesquisa" placeholder="Digite o nome do filme" value="{{old('pesquisa')}}">
-            <button type="submit" class="bg-cyan-500 text-xl text-white font-sans duration-500 px-6 py-2  mx-4 hover:bg-cyan-300 rounded">Pesquisar</button>
-        </form>
-    </div>
+    <div  class="container mx-auto py-8 w-full">
+        <div class="text-right mt-3">
+            <form action=" {{ route('index.search') }} " method="post">
+                @csrf
+                <input class="border border-slate-500 text-xl px-6 py-2 w-80" type="text" name="pesquisa" placeholder="Digite o nome do filme" value="{{old('pesquisa')}}">
+                <button type="submit" class="bg-cyan-500 text-xl text-white font-sans duration-500 px-6 py-2 hover:bg-cyan-300 rounded">Pesquisar</button>
+            </form>
+        </div>
    
-    <h1 class="text-center text-3xl">Principais Novos Filmes</h1>
-    <div class='flex p-5 justify-center items-center'>
+        <h1 class="text-center text-3xl mb-3">Principais Filmes Polulares</h1>
         <table class="w-full text-sm text-left">
             <thead class="bg-cyan-500 border-collapse border border-slate-500 text-xs uppercase text-center">
                 <tr>
@@ -32,7 +32,7 @@
                     <td class="text-center"> {{ $filme['vote_average']}} </td>
                     <td> {{ $filme['title'] }} </td>
                     <td class="text-center"> {{ (array_key_exists('release_date', $filme)) ? date('d/m/Y', strtotime($filme['release_date'])) : "" }} </td>
-                    <td class="text-center" title='Mais Informações sobre o filme'> <a href=" {{ route("index.more", ['id' => $filme['id']]) }}"><i class="fas fa-angle-double-right"></i> </a></td>
+                    <td class="text-center" title='Mais Informações sobre o filme'> <a href=" {{ route("index.more", ['id' => $filme['id']]) }}"><i class="fas fa-info-circle"></i> </a></td>
                 </tr>
                 @endforeach
             </tbody>

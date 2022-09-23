@@ -30,11 +30,20 @@ class ApiController extends Controller
         $apiConfiguration = Http::get("https://api.themoviedb.org/3/configuration?api_key={$this->apiKey}")->json('images');
         $urlBase = $apiConfiguration['base_url'];
 
-        $infoFilme = Http::get("https://api.themoviedb.org/3/movie/{$id}?api_key={$this->apiKey}&language=pt-BR")->json();   
+        $infoFilme   = Http::get("https://api.themoviedb.org/3/movie/{$id}?api_key={$this->apiKey}&language=pt-BR&append_to_response=credits")->json();
+        
         $path = $infoFilme["poster_path"];
-
         $poster ="{$urlBase}". "w300" . "$path";
 
-        return view('show', compact('infoFilme', 'poster'));
+        $infoGenero = $infoFilme['genres'];
+        $infoEquipe = $infoFilme['credits']['crew'];
+
+        //foreach ($infoEquipe as $key => $equipe) {
+            
+        //}
+        //var_dump("<pre>", array_unique($teste), "</pre>"); die;
+
+        //var_dump("<pre>", $infoFilme, "</pre>"); die;
+        return view('show', compact('infoFilme', 'poster', 'infoGenero'));
     }
 }
