@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\SearchRequest;
+use App\Models\Elenco;
+use App\Models\Filme;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
@@ -27,23 +29,25 @@ class ApiController extends Controller
     {
         $id = $request->id;
 
-        $apiConfiguration = Http::get("https://api.themoviedb.org/3/configuration?api_key={$this->apiKey}")->json('images');
-        $urlBase = $apiConfiguration['base_url'];
+        $apiConfiguration   = Http::get("https://api.themoviedb.org/3/configuration?api_key={$this->apiKey}")->json('images');
+        $infoFilme          = Http::get("https://api.themoviedb.org/3/movie/{$id}?api_key={$this->apiKey}&language=pt-BR&append_to_response=credits,release_dates")->json();
+        $infoTrailer        = Http::get("https://api.themoviedb.org/3/movie/{$id}/videos?api_key={$this->apiKey}&language=pt-BR")->json('results');
+ 
+        $titulo         = Filme::getTitulo($infoFilme);
+        $anoLancamento  = Filme::getAnoLancamento($infoFilme);
+        $tagLine        = Filme::getTagLine($infoFilme);
+        $nota           = Filme::getNotaFilme($infoFilme);
+        $genero         = Filme::getGenero($infoFilme['genres']);
+        $poster         = Filme::montaPoster($apiConfiguration['base_url'], $infoFilme, 300);
+        $sinopse        = Filme::getSinopse($infoFilme);
+        $trailer        = Filme::getTrailer($id, $infoTrailer);
+        $classificacao  = Filme::getClassificacao($infoFilme);
 
-        $infoFilme   = Http::get("https://api.themoviedb.org/3/movie/{$id}?api_key={$this->apiKey}&language=pt-BR&append_to_response=credits")->json();
-        
-        $path = $infoFilme["poster_path"];
-        $poster ="{$urlBase}". "w300" . "$path";
 
-        $infoGenero = $infoFilme['genres'];
         $infoEquipe = $infoFilme['credits']['crew'];
+        $nomeDiretor = Elenco::getDirectorName($infoEquipe);
+        $nomeEscritor = Elenco::getWriterName($infoEquipe);
 
-        //foreach ($infoEquipe as $key => $equipe) {
-            
-        //}
-        //var_dump("<pre>", array_unique($teste), "</pre>"); die;
-
-        //var_dump("<pre>", $infoFilme, "</pre>"); die;
-        return view('show', compact('infoFilme', 'poster', 'infoGenero'));
+        return view('show', compact('titulo', 'anoLancamento', 'tagLine', 'nota', 'genero', 'sinopse', 'poster', 'nomeDiretor', 'nomeEscritor', 'trailer', 'classificacao'));
     }
 }
