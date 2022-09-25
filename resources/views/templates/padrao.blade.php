@@ -8,11 +8,11 @@
     <title>Projeto API</title>
     <link rel="stylesheet" href="{{ url('css/app.css') }}">
 </head>
-<body class="bg-gray-50">
-    <nav class="p-5 bg-white shadow md:flex md:items-center md:justify-between">
-        <div class="flex justify-between items-center">
+<body class="bg-gray-900">
+    <nav class="p-5 bg-black shadow md:flex md:items-center md:justify-between">
+        <div class="flex justify-between items-center text-yellow-500">
             <a href="{{ route('index') }}">
-                <span class="hover:text-cyan-500 text-2xl font-sans cursor-pointer">
+                <span class="hover:text-yellow-300 text-2xl font-sans cursor-pointer">
                     <i class="fas fa-home"></i>
                     <label class="font-sans cursor-pointer" for="">HOME</label> 
                 </span>
@@ -22,21 +22,21 @@
                 </span>
             </a>
         </div>
-        <ul class="md:flex md:items-center z-[-1] md:z-auto md:static absolute bg-white w-full left-0 md:w-auto md:py-0 py-4 md:pl-0 pl-7 md:opacity-100 opacity-0 top-[-400] transition-all ease-in duration-500">
+        <ul class="md:flex md:items-center z-[-1] md:z-auto md:static absolute bg-black text-yellow-500 w-full left-0 md:w-auto md:py-0 py-4 md:pl-0 pl-7 md:opacity-100 opacity-0 top-[-400] transition-all ease-in duration-500">
             <li class="mx-4 my-6 md:my-0">
-                <a href="" class="text-xl hover:text-cyan-500 duration-500">Documentação</a>
+                <a href="" class="text-xl hover:text-yellow-300 duration-500">Documentação</a>
             </li> 
             <li class="mx-4 my-6 md:my-0">
-                <a href="" class="text-xl hover:text-cyan-500 duration-500">Sobre Mim</a>
+                <a href="" class="text-xl hover:text-yellow-300 duration-500">Sobre Mim</a>
             </li> 
             <li class="mx-4 my-6 md:my-0">
-                <a href="" class="text-xl hover:text-cyan-500 duration-500">Em breve</a>
+                <a href="" class="text-xl hover:text-yellow-300 duration-500">Em breve</a>
             </li> 
             <li class="mx-4 my-6 md:my-0">
-                <a href="" class="text-xl hover:text-cyan-500 duration-500">Em breve</a>
+                <a href="" class="text-xl hover:text-yellow-300 duration-500">Em breve</a>
             </li> 
 
-            <button class="bg-cyan-500 text-xl text-white font-sans duration-500 px-6 py-2 mx-4 hover:bg-cyan-300 rounded">
+            <button class="bg-yellow-500 text-xl text-black font-sans duration-500 px-6 py-2 mx-4 hover:bg-yellow-300 rounded">
                 Sair
             </button>
         </ul>
