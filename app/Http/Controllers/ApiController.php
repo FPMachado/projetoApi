@@ -48,18 +48,15 @@ class ApiController extends Controller
         
         $nomeDiretor    = Elenco::getDirectorName($infoEquipe);
         $nomeEscritor   = Elenco::getWriterName($infoEquipe);
-        if(!empty($nomeDiretor)){
-            //var_dump('<pre>', "entrou" , '</pre>'); die;
-            $idDiretor      = Elenco::getIdDirector($infoEquipe);
-            $filmesDiretor  = Http::get("https://api.themoviedb.org/3/person/{$idDiretor}/combined_credits?api_key={$this->apiKey}&language=pt-BR")->json('crew');
-            $filmePopular = Filme::getMovieByPopularity($filmesDiretor);
-            $posterPopular = Filme::montaPoster($apiConfiguration['base_url'], $filmePopular, 92);
-        }else{
+        //$idDiretor      = Elenco::getIdDirector($infoEquipe);
+        //$filmesDiretor  = Http::get("https://api.themoviedb.org/3/person/{$idDiretor}/combined_credits?api_key={$this->apiKey}&language=pt-BR")->json('crew');
+        //$filmePopular = Filme::getMovieByPopularity($filmesDiretor);
+        //$posterPopular = Filme::montaPoster($apiConfiguration['base_url'], $filmePopular, 92);
 
-        }
+      
         
         
         
-        return view('show', compact('posterPopular','titulo', 'anoLancamento', 'tagLine', 'nota', 'genero', 'sinopse', 'poster', 'nomeDiretor', 'nomeEscritor', 'trailer', 'classificacao'));
+        return view('show', compact(/*'posterPopular',*/'titulo', 'anoLancamento', 'tagLine', 'nota', 'genero', 'sinopse', 'poster', 'nomeDiretor', 'nomeEscritor', 'trailer', 'classificacao'));
     }
 }

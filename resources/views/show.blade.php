@@ -50,10 +50,10 @@
                     <span class="my-3">
                         <h2 class="font-bold">Diretor:</h2>
                         <h2>{{$nomeDiretor}}</h2>
-                        <h2 class="font-bold">Filme mais popular deste diretor:</h2>
+                        <!--<h2 class="font-bold">Filme mais popular deste diretor:</h2>
                         <div class="px-2 py-1">
-                            <img class="rounded-lg shadow-2xl" src="{{$posterPopular}}" alt="">
-                        </div>
+                            <img class="rounded-lg shadow-2xl" src="/*$posterPopular}}*/" alt="">
+                        </div>-->
                     </span>
                     
                     <span class="my-3">
@@ -63,11 +63,16 @@
                 </div>
                 
             </div>
+
+            <div>
+                <button class="bg-green-500 text-white">Adicionar na minha lista</button>
+            </div>
+
         </div> 
         <div class="px-3 py-2">
             <hr>
             <span>
-                <h2><b>Sinopse</b></h2>
+                <h2 class="py-2"><b>Sinopse</b></h2>
                 <p>{{ $sinopse }}</p>
             </span>
         </div>

@@ -20,7 +20,7 @@ class Elenco extends Model
             }
         }
 
-        return $nomeDiretor;
+        return (!empty($nomeDiretor)) ? $nomeDiretor : "";
     }
 
     public static function getWriterName(array $infoEquipe)
@@ -36,6 +36,7 @@ class Elenco extends Model
 
     public static function getIdDirector(array $infoEquipe)
     {
+        $idDiretor = "";
         foreach ($infoEquipe as $key => $diretor) {
             if($diretor['job'] == "Director"){
                 $idDiretor = $diretor['id'];
