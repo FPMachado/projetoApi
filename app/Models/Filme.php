@@ -81,4 +81,17 @@ class Filme extends Model
 
         return (!empty($idade)) ? $idade : "SC";
     }
+
+    public static function getMovieBypopularity(array $filmes)
+    {
+        $pop ="";
+        $poster="";
+        foreach ($filmes as $key => $filme) {    
+            if($pop < $filme['popularity']){
+                $pop= $filme['popularity'];
+                $filmePopular = $filme;
+            }   
+        }
+        return $filmePopular;
+    }
 }

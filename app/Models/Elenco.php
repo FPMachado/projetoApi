@@ -33,4 +33,15 @@ class Elenco extends Model
 
        return (!empty($nomeEscritor)) ? $nomeEscritor : "" ;
     }
+
+    public static function getIdDirector(array $infoEquipe)
+    {
+        foreach ($infoEquipe as $key => $diretor) {
+            if($diretor['job'] == "Director"){
+                $idDiretor = $diretor['id'];
+            }
+        }
+        return $idDiretor;
+    }
+
 }

@@ -32,7 +32,8 @@ class ApiController extends Controller
         $apiConfiguration   = Http::get("https://api.themoviedb.org/3/configuration?api_key={$this->apiKey}")->json('images');
         $infoFilme          = Http::get("https://api.themoviedb.org/3/movie/{$id}?api_key={$this->apiKey}&language=pt-BR&append_to_response=credits,release_dates")->json();
         $infoTrailer        = Http::get("https://api.themoviedb.org/3/movie/{$id}/videos?api_key={$this->apiKey}&language=pt-BR")->json('results');
- 
+
+
         $titulo         = Filme::getTitulo($infoFilme);
         $anoLancamento  = Filme::getAnoLancamento($infoFilme);
         $tagLine        = Filme::getTagLine($infoFilme);
@@ -43,11 +44,22 @@ class ApiController extends Controller
         $trailer        = Filme::getTrailer($id, $infoTrailer);
         $classificacao  = Filme::getClassificacao($infoFilme);
 
-
         $infoEquipe = $infoFilme['credits']['crew'];
-        $nomeDiretor = Elenco::getDirectorName($infoEquipe);
-        $nomeEscritor = Elenco::getWriterName($infoEquipe);
+        
+        $nomeDiretor    = Elenco::getDirectorName($infoEquipe);
+        $nomeEscritor   = Elenco::getWriterName($infoEquipe);
+        if(!empty($nomeDiretor)){
+            //var_dump('<pre>', "entrou" , '</pre>'); die;
+            $idDiretor      = Elenco::getIdDirector($infoEquipe);
+            $filmesDiretor  = Http::get("https://api.themoviedb.org/3/person/{$idDiretor}/combined_credits?api_key={$this->apiKey}&language=pt-BR")->json('crew');
+            $filmePopular = Filme::getMovieByPopularity($filmesDiretor);
+            $posterPopular = Filme::montaPoster($apiConfiguration['base_url'], $filmePopular, 92);
+        }else{
 
-        return view('show', compact('titulo', 'anoLancamento', 'tagLine', 'nota', 'genero', 'sinopse', 'poster', 'nomeDiretor', 'nomeEscritor', 'trailer', 'classificacao'));
+        }
+        
+        
+        
+        return view('show', compact('posterPopular','titulo', 'anoLancamento', 'tagLine', 'nota', 'genero', 'sinopse', 'poster', 'nomeDiretor', 'nomeEscritor', 'trailer', 'classificacao'));
     }
 }

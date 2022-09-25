@@ -50,10 +50,14 @@
                     <span class="my-3">
                         <h2 class="font-bold">Diretor:</h2>
                         <h2>{{$nomeDiretor}}</h2>
+                        <h2 class="font-bold">Filme mais popular deste diretor:</h2>
+                        <div class="px-2 py-1">
+                            <img class="rounded-lg shadow-2xl" src="{{$posterPopular}}" alt="">
+                        </div>
                     </span>
                     
                     <span class="my-3">
-                        <h2 class="font-bold">Escritor:</h2>
+                        <h2 class="font-bold">Roteirista:</h2>
                         <h2>{{$nomeEscritor}}</h2>
                     </span>
                 </div>
