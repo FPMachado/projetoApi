@@ -48,10 +48,14 @@ class ApiController extends Controller
         
         $nomeDiretor    = Elenco::getDirectorName($infoEquipe);
         $nomeEscritor   = Elenco::getWriterName($infoEquipe);
-        //$idDiretor      = Elenco::getIdDirector($infoEquipe);
-        //$filmesDiretor  = Http::get("https://api.themoviedb.org/3/person/{$idDiretor}/combined_credits?api_key={$this->apiKey}&language=pt-BR")->json('crew');
-        //$filmePopular = Filme::getMovieByPopularity($filmesDiretor);
-        //$posterPopular = Filme::montaPoster($apiConfiguration['base_url'], $filmePopular, 92);
+        // $idDiretor      = Elenco::getIdDirector($infoEquipe);
+        // if(!empty($idDiretor)){
+        //     $filmesDiretor  = Http::get("https://api.themoviedb.org/3/person/{$idDiretor}/combined_credits?api_key={$this->apiKey}&language=pt-BR")->json('crew');
+ 
+        //     $filmePopular   = Filme::getMovieByPopularity($filmesDiretor);
+        //     var_dump("<pre>", $filmePopular, "</pre>"); die;
+        //     $posterPopular = Filme::montaPoster($apiConfiguration['base_url'], $filmePopular, 92);
+        // }
 
       
         
