@@ -597,6 +597,9 @@ video {
 .mb-2 {
   margin-bottom: 0.5rem;
 }
+.mr-64 {
+  margin-right: 16rem;
+}
 .ml-1 {
   margin-left: 0.25rem;
 }
@@ -663,6 +666,9 @@ video {
 .w-12 {
   width: 3rem;
 }
+.w-64 {
+  width: 16rem;
+}
 .w-5 {
   width: 1.25rem;
 }
@@ -674,6 +680,9 @@ video {
 }
 .max-w-6xl {
   max-width: 72rem;
+}
+.flex-1 {
+  flex: 1 1 0%;
 }
 .border-collapse {
   border-collapse: collapse;
@@ -697,6 +706,16 @@ video {
   --tw-space-x-reverse: 0;
   margin-right: calc(12rem * var(--tw-space-x-reverse));
   margin-left: calc(12rem * calc(1 - var(--tw-space-x-reverse)));
+}
+.space-x-5 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 0;
+  margin-right: calc(1.25rem * var(--tw-space-x-reverse));
+  margin-left: calc(1.25rem * calc(1 - var(--tw-space-x-reverse)));
+}
+.space-y-10 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(2.5rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(2.5rem * var(--tw-space-y-reverse));
 }
 .overflow-hidden {
   overflow: hidden;
@@ -804,6 +823,10 @@ video {
 .py-1 {
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
+}
+.py-36 {
+  padding-top: 9rem;
+  padding-bottom: 9rem;
 }
 .py-4 {
   padding-top: 1rem;

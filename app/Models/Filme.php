@@ -93,4 +93,19 @@ class Filme extends Model
         }
         return $filmePopular;
     }
+
+    public static function getOrcamento(array $infoFilme)
+    {   
+        return number_format($infoFilme['budget'], 2, ",", ".");
+    }
+
+    public static function getReceita(array $infoFilme)
+    {
+        return number_format($infoFilme['revenue'], 2, ",", ".");
+    }
+
+    public static function getStatusFilme($infoFilme)
+    {
+        return ($infoFilme['status'] == "Planned") ? "Planejado" : "Lançado";
+    }
 }

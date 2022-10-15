@@ -43,6 +43,9 @@ class ApiController extends Controller
         $sinopse        = Filme::getSinopse($infoFilme);
         $trailer        = Filme::getTrailer($id, $infoTrailer);
         $classificacao  = Filme::getClassificacao($infoFilme);
+        $orcamento      = Filme::getOrcamento($infoFilme);
+        $receita        = Filme::getReceita($infoFilme);
+        $status         = Filme::getStatusFilme($infoFilme);
 
         $infoEquipe = $infoFilme['credits']['crew'];
         
@@ -61,6 +64,6 @@ class ApiController extends Controller
         
         
         
-        return view('show', compact(/*'posterPopular',*/'titulo', 'anoLancamento', 'tagLine', 'nota', 'genero', 'sinopse', 'poster', 'nomeDiretor', 'nomeEscritor', 'trailer', 'classificacao'));
+        return view('show', compact(/*'posterPopular',*/'titulo', 'id', 'anoLancamento', 'tagLine', 'nota', 'genero', 'sinopse', 'poster', 'nomeDiretor', 'nomeEscritor', 'trailer', 'classificacao', 'orcamento', 'receita', 'status'));
     }
 }
