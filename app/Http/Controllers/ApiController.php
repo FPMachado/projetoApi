@@ -17,7 +17,7 @@ class ApiController extends Controller
     {
         // $filmes = Http::get("https://api.themoviedb.org/3/discover/movie?api_key={$this->apiKey}&language=pt-BR&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate")->json('results');
         $filmes = TmdbApi::test();
-        var_dump("<pre>", $filmes, "</pre>"); die;
+        //var_dump("<pre>", $filmes, "</pre>"); die;
         return view('index', compact('filmes'));
     }
 
