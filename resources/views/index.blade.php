@@ -23,7 +23,7 @@
                     <th scope="col" class="py-3 px-6 ">Nota</th>
                     <th scope="col" class="py-3 px-6">Nome</th>
                     <th scope="col" class="py-3 px-6">Data de Lançamento</th>
-                    <th scope="col" class="py-3 px-6" colspan="">Utilitários</th>
+                    <th scope="col" class="py-3 px-6">Utilitários</th>
                 </tr>
             </thead>
             @foreach ($filmes as $filme)
@@ -32,7 +32,7 @@
                     <td class="text-center"> {{ $filme['vote_average']}} </td>
                     <td> {{ $filme['title'] }} </td>
                     <td class="text-center"> {{ (array_key_exists('release_date', $filme)) ? date('d/m/Y', strtotime($filme['release_date'])) : "" }} </td>
-                    <td class="text-center" title='Mais Informações sobre o filme'> <a href=" {{ route("index.more", ['id' => $filme['id']]) }}"><i class="fas fa-info-circle"></i> </a></td>
+                    <td class="text-center" title='Mais Informações sobre o filme'> <a href=" {{ route("index.more", ['id' => $filme['id']]) }}"><i class="fas fa-info-circle"></i></a></td>
                 </tr>
                 @endforeach
             </tbody>

@@ -21,7 +21,7 @@ Route::get('/index/{id}', [ApiController::class, 'show'])->name('index.more');
 
 Route::post('/index/store/{id}',[FilmesController::class, 'store'])->name('index.store');
 
-
+Route::post('/index/excluir/{id}', [FilmesController::class, 'teste'])->name('excluir');
 
 Route::get('/', function () {
     return view('welcome');

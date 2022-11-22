@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Facades\TmdbApi;
 use App\Http\Requests\SearchRequest;
 use App\Models\Elenco;
 use App\Models\Filme;
@@ -14,7 +15,9 @@ class ApiController extends Controller
 
     public function __invoke()
     {
-        $filmes = Http::get("https://api.themoviedb.org/3/discover/movie?api_key={$this->apiKey}&language=pt-BR&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate")->json('results');
+        // $filmes = Http::get("https://api.themoviedb.org/3/discover/movie?api_key={$this->apiKey}&language=pt-BR&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate")->json('results');
+        $filmes = TmdbApi::get();
+        var_dump("<pre>", $filmes, "</pre>"); die;
         return view('index', compact('filmes'));
     }
 
