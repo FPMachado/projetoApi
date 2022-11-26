@@ -32,17 +32,6 @@
                         <span>
                             <h3 class="my-6 font-bold">Nota: {{ $nota }} </h3> 
                         </span>
-                        
-                        {{-- @if (!empty($trailer))
-                        <button class="hover:text-yellow-500" type="button">
-                            <a href=" {{$trailer}} "  target="_blank" title="Assistir trailer">
-                                <span class="text-2xl my-6">
-                                    <i class="fas fa-play"></i>
-                                </span> 
-                                <span class="text-bold text-lg">Assitir Trailer</span>
-                            </a>
-                        </button>
-                        @endif --}}
                     </div>
 
                     @if (!empty($genero))
@@ -55,12 +44,10 @@
                                 <h2 class="font-bold">Diretor:</h2>
                                 <h2>{{$nomeDiretor}}</h2>
                             @endif
-                            {{-- <h2 class="font-bold">Filme mais popular deste diretor:</h2>
-                            <div class="px-2 py-1">       
-                                <img class="rounded-lg shadow-2xl" src="{{$posterPopular}}" alt="">
-                            </div>        --}}
-                        </span>
-                    
+                            
+                        </span>                 
+                    </div>
+                    <div class="flex space-x-48">
                         @if (!empty($nomeEscritor))
                             <span class="my-3">
                                 <h2 class="font-bold">Roteirista:</h2>
@@ -75,9 +62,8 @@
                     <h2 class="mr-64"><b>Orçamento:</b> {{$orcamento}} </h2>
                     <h2 class="mr-64"><b>Receita:</b> {{$receita}} </h2>
                 </div>
-
-            </div>
                 
+            </div>
 
             <div class="px-3 py-2">
                 <hr class="mb-2">
@@ -91,8 +77,7 @@
                 @endif
                 <button class="bg-green-500 hover:bg-green-400 rounded-lg px-6 py-2" type="submit">Adicionar na minha lista</button>
             </div>
-            
-            
+                        
             <div class="px-3 py-2">
                 <hr>
                 <span>
