@@ -22,18 +22,18 @@
                 </span>
             </a>
         </div>
-        <ul class="md:flex md:items-center z-[-1] md:z-auto md:static absolute bg-black text-yellow-500 w-full left-0 md:w-auto md:py-0 py-4 md:pl-0 pl-7 md:opacity-100 opacity-0 top-[-400] transition-all ease-in duration-500">
+        <ul class="mt-0 md:flex md:items-center z-[-1] md:z-auto md:static absolute bg-black text-yellow-500 w-full left-0 md:w-auto md:py-0 py-4 md:pl-0 pl-7 md:opacity-100 opacity-0 top-[-400] transition-all ease-in duration-500">
             <li class="mx-4 my-6 md:my-0">
                 <a href="" class="text-xl hover:text-yellow-300 duration-500">Documentação</a>
             </li> 
             <li class="mx-4 my-6 md:my-0">
-                <a href="" class="text-xl hover:text-yellow-300 duration-500">Sobre Mim</a>
-            </li> 
-            <li class="mx-4 my-6 md:my-0">
                 <a href="" class="text-xl hover:text-yellow-300 duration-500">Em breve</a>
             </li> 
             <li class="mx-4 my-6 md:my-0">
                 <a href="" class="text-xl hover:text-yellow-300 duration-500">Em breve</a>
+            </li> 
+            <li class="mx-4 my-6 md:my-0">
+                <a href=" {{route('sobreMim')}} " class="text-xl hover:text-yellow-300 duration-500">Sobre Mim</a>
             </li> 
 
             <button class="bg-yellow-500 text-xl text-black font-sans duration-500 px-6 py-2 mx-4 hover:bg-yellow-300 rounded">

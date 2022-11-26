@@ -27,15 +27,15 @@
                 </tr>
             </thead>
             @foreach ($filmes as $filme)
-            <tbody class="text-xl">  
-                <tr class=" hover:bg-yellow-500 rounded border-collapse border border-black">
-                    <td class="text-center"> {{ $filme['vote_average']}} </td>
-                    <td> {{ $filme['title'] }} </td>
-                    <td class="text-center"> {{ (array_key_exists('release_date', $filme)) ? date('d/m/Y', strtotime($filme['release_date'])) : "" }} </td>
-                    <td class="text-center" title='Mais Informações sobre o filme'> <a href=" {{ route("index.more", ['id' => $filme['id']]) }}"><i class="fas fa-info-circle"></i></a></td>
-                </tr>
-                @endforeach
-            </tbody>
+                <tbody class="text-xl">  
+                    <tr class=" hover:bg-yellow-500 rounded border-collapse border border-black">
+                        <td class="text-center"> {{ $filme['vote_average']}} </td>
+                        <td> {{ $filme['title'] }} </td>
+                        <td class="text-center"> {{ (array_key_exists('release_date', $filme)) ? date('d/m/Y', strtotime($filme['release_date'])) : "" }} </td>
+                        <td class="text-center" title='Mais Informações sobre o filme'> <a href=" {{ route("index.more", ['id' => $filme['id']]) }}"><i class="fas fa-info-circle"></i></a></td>
+                    </tr>
+                </tbody>
+            @endforeach
         </table>
     </div>
 @endsection
