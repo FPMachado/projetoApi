@@ -23,7 +23,7 @@
                 </p>
             </span>
 
-            <span class="text-yellow-500 hover:text-yellow-300 grid justify-items-center px-3 py-3"><a href="https://www.linkedin.com/in/filipe-pires-79018013b/" target="_blank"><i class="fab fa-linkedin text-3xl"></i></a></span>
+            <span class="text-yellow-500 hover:text-yellow-300 grid justify-items-center px-3 py-3"><a href="https://www.linkedin.com/in/filipe-pires-79018013b/" target="blank"><i class="fab fa-linkedin text-3xl"></i></a></span>
         </div>
     </div>
 @endsection
