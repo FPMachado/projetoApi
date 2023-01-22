@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ApiController;
 use App\Http\Controllers\FilmesController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\SobreMimController;
 use Illuminate\Support\Facades\Route;
 
@@ -16,6 +17,9 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('/login', LoginController::class);
+Route::get('/cadastro', [LoginController::class, 'cadastro'])->name('cadastro');
 
 Route::get('/index', ApiController::class)->name('index');
 Route::any('/index/search', [ApiController::class, 'search'])->name('index.search');
