@@ -5,7 +5,7 @@ use App\Http\Controllers\FilmesController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\SobreMimController;
 use Illuminate\Support\Facades\Route;
-require __DIR__.'/auth.php';
+
 
 /*
 |--------------------------------------------------------------------------
@@ -30,11 +30,6 @@ Route::post('/index/excluir/{id}', [FilmesController::class, 'teste'])->name('ex
 
 Route::get('/sobreMim', SobreMimController::class)->name('sobreMim');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
-
-require __DIR__.'/auth.php';
 
 Route::get('/', function () {
     return view('welcome');

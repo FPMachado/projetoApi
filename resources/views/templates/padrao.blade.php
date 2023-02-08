@@ -36,11 +36,9 @@
                 <a href=" {{route('sobreMim')}} " class="text-xl hover:text-yellow-300 duration-500">Sobre Mim</a>
             </li> 
 
-            {{-- <button class="bg-yellow-500 text-xl text-black font-sans duration-500 px-6 py-2 mx-4 hover:bg-yellow-300 rounded" href="{{route('login')}}">
+            <button class="bg-yellow-500 text-xl text-black font-sans duration-500 px-6 py-2 mx-4 hover:bg-yellow-300 rounded">
                 Sair
-            </button> --}}
-
-            <a href="{{route('login')}}">Login</a>
+            </button>
 
         </ul>
     </nav>
