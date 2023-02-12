@@ -15,7 +15,7 @@ class ApiController extends Controller
 
     public function __construct()
     {
-       $this->apiKey = env("API_KEY");
+       $this->apiKey = config('tmdb.api_key');
        $this->Http = Http::withOptions(['verify' => false]);
     }
 

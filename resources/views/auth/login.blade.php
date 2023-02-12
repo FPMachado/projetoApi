@@ -14,7 +14,7 @@
 
                 <div class="mt-3">
                     <label for="senha" class="block text-base mb-2 font-semibold">Senha</label>
-                    <input type="password" name="senha" class="border w-full text-base px-2 py-1 rounded-md focus:outline-none focus:ring-0 focus:border-yellow-400" placeholder="Insira sua senha"/>
+                    <input type="password" name="password" class="border w-full text-base px-2 py-1 rounded-md focus:outline-none focus:ring-0 focus:border-yellow-400" placeholder="Insira sua senha"/>
                 </div>
 
                 <div class="mt-3 flex justify-between items-center">

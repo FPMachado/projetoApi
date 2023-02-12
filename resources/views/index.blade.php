@@ -7,6 +7,10 @@
         @endforeach
     @endif
 
+    @if (session('success'))
+        <div class="text-center w-full bg-green-400 mb-3"> {{session('success')}} </div>
+    @endif
+
     <div  class="container mx-auto py-8 w-full">
         <div class="text-right mt-3">
             <form action=" {{ route('index.search') }} " method="post">

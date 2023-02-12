@@ -5,7 +5,7 @@
         <div class="w-96 p-6 shadow-lg bg-gray-500 rounded-md">
             <h1 class="text-3xl block text-center font-semibold text-yellow-400"><i class="far fa-id-card"></i></i> Criar Conta</h1>
             <hr class="mt-3">
-            <form action="{{route('teste')}}" method="POST">
+            <form action="{{route('register')}}" method="POST">
                 @csrf
                 <div class="mt-3">
                     <label for="nome" class="block text-base mb-2 font-semibold">Nome</label>
@@ -18,13 +18,13 @@
                 </div>
 
                 <div class="mt-3">
-                    <label for="senha" class="block text-base mb-2 font-semibold">Senha</label>
-                    <input type="password" name="senha" class="border w-full text-base px-2 py-1 rounded-md focus:outline-none focus:ring-0 focus:border-yellow-400" placeholder="Insira sua senha"/>
+                    <label for="password" class="block text-base mb-2 font-semibold">Senha</label>
+                    <input type="password" name="password" class="border w-full text-base px-2 py-1 rounded-md focus:outline-none focus:ring-0 focus:border-yellow-400" placeholder="Insira sua senha"/>
                 </div>
 
                 <div class="mt-3">
-                    <label for="confirmSenha" class="block text-base mb-2 font-semibold">Confirmar Senha</label>
-                    <input type="password" name="confirmSenha" class="border w-full text-base px-2 py-1 rounded-md focus:outline-none focus:ring-0 focus:border-yellow-400" placeholder="Insira novamente sua senha"/>
+                    <label for="password_confirmation" class="block text-base mb-2 font-semibold">Confirmar Senha</label>
+                    <input type="password" name="password_confirmation" class="border w-full text-base px-2 py-1 rounded-md focus:outline-none focus:ring-0 focus:border-yellow-400" placeholder="Insira novamente sua senha"/>
                 </div>
 
                 <div class="mt-5">
