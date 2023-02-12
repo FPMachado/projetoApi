@@ -18,8 +18,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/login', LoginController::class);
-Route::get('/cadastro', [LoginController::class, 'cadastro'])->name('cadastro');
+
 
 Route::get('/index', ApiController::class)->name('index');
 Route::any('/index/search', [ApiController::class, 'search'])->name('index.search');
@@ -30,6 +29,12 @@ Route::post('/index/excluir/{id}', [FilmesController::class, 'teste'])->name('ex
 
 Route::get('/sobreMim', SobreMimController::class)->name('sobreMim');
 
+//redirecionamento depois do login
+Route::get('/dashboard', function(){
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+
+require __DIR__.'/auth.php';
 
 Route::get('/', function () {
     return view('welcome');

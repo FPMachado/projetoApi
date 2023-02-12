@@ -21,7 +21,7 @@
                 <a href=" {{route('sobreMim')}} " class="text-xl hover:text-yellow-300 duration-500">Sobre Mim</a>
             </li> 
             <li class="mx-4 my-6 md:my-0">
-                <a href=" {{route("cadastro")}} " class="text-xl hover:text-yellow-300 duration-500">Criar conta</a>
+                <a href=" {{ route('register') }} " class="text-xl hover:text-yellow-300 duration-500">Criar conta</a>
             </li> 
         </ul>
     </nav>
