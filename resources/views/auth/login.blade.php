@@ -1,6 +1,16 @@
 @extends("templates.login")
 
 @section("content")
+    @if ($errors->any())   
+        @foreach ($errors->all() as $erro)
+            <div class="text-center w-full bg-red-400 mb-3"> {{$erro}} </div>
+        @endforeach
+    @endif
+
+    @if (session('message'))
+        <div class="text-center w-full bg-green-400 mb-3"> {{session('message')}} </div>
+    @endif
+
     <form action="{{route('login')}}" method="POST"> 
         @csrf
         <div class="flex justify-center items-center h-screen">
@@ -19,7 +29,7 @@
 
                 <div class="mt-3 flex justify-between items-center">
                     <div>
-                        <input type="checkbox">
+                        <input type="checkbox" name="remember-me">
                         <label>Lembrar de mim</label> 
                     </div>
                     <div>

@@ -823,6 +823,9 @@ select {
 .block {
   display: block;
 }
+.inline-block {
+  display: inline-block;
+}
 .flex {
   display: flex;
 }
@@ -865,6 +868,9 @@ select {
 .h-8 {
   height: 2rem;
 }
+.h-3 {
+  height: 0.75rem;
+}
 .min-h-screen {
   min-height: 100vh;
 }
@@ -903,6 +909,9 @@ select {
 }
 .w-48 {
   width: 12rem;
+}
+.w-3 {
+  width: 0.75rem;
 }
 .max-w-7xl {
   max-width: 80rem;
@@ -1094,6 +1103,10 @@ select {
 .border-gray-400 {
   --tw-border-opacity: 1;
   border-color: rgb(156 163 175 / var(--tw-border-opacity));
+}
+.border-gray-500 {
+  --tw-border-opacity: 1;
+  border-color: rgb(107 114 128 / var(--tw-border-opacity));
 }
 .bg-white {
   --tw-bg-opacity: 1;

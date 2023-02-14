@@ -8,8 +8,8 @@
             <form action="{{route('register')}}" method="POST">
                 @csrf
                 <div class="mt-3">
-                    <label for="nome" class="block text-base mb-2 font-semibold">Nome</label>
-                    <input type="text" name="nome" class="border w-full text-base px-2 py-1 rounded-md focus:outline-none focus:ring-0 focus:border-yellow-400" placeholder="Insira seu nome"/>
+                    <label for="name" class="block text-base mb-2 font-semibold">Nome</label>
+                    <input type="text" name="name" class="border w-full text-base px-2 py-1 rounded-md focus:outline-none focus:ring-0 focus:border-yellow-400" placeholder="Insira seu nome"/>
                 </div>
 
                 <div class="mt-3">

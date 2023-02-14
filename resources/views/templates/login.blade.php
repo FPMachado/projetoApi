@@ -11,7 +11,12 @@
 <body class="bg-gray-900 truncate">
     <nav class="p-5 bg-black shadow md:flex md:items-center md:justify-between">
         <div class="flex justify-between items-center text-yellow-500">
-            <span class="text-3xl">PROJETO TMDB API</span>
+            <a href="{{ route('index') }}">
+                <span class="hover:text-yellow-300 text-2xl font-sans cursor-pointer">
+                    <i class="fas fa-home"></i>
+                    <span class="text-2xl cursor-pointer">HOME</span>
+                </span>
+            </a>
         </div>
         <ul class="mt-0 md:flex md:items-center z-[-1] md:z-auto md:static absolute bg-black text-yellow-500 w-full left-0 md:w-auto md:py-0 py-4 md:pl-0 pl-7 md:opacity-100 opacity-0 top-[-400] transition-all ease-in duration-500">
             <li class="mx-4 my-6 md:my-0">
