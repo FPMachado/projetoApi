@@ -7,8 +7,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
     <title>Projeto API</title>
     <link rel="stylesheet" href="{{ url('css/app.css') }}">
+    <script src="https://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="{{url('js/jquery.js')}}"></script>
 </head>
-<body class="bg-gray-900 truncate">
+<body class="bg-gray-900">
     <nav class="p-5 bg-black shadow md:flex md:items-center md:justify-between">
         <div class="flex justify-between items-center text-yellow-500">
             <a href="{{ route('index') }}">
