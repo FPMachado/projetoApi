@@ -18,17 +18,17 @@
                 @csrf
                 <div class="mt-3">
                     <label for="name" class="block text-base mb-2 font-semibold">Nome <span class="text-yellow-500">*</span></label>
-                    <input type="text" name="name" class="border w-full text-base px-2 py-1 rounded-md focus:outline-none focus:ring-0 focus:border-yellow-400" placeholder="Insira seu nome" value="{{old('name')}}"/>
+                    <input type="text" name="name" class="border w-full text-base px-2 py-1 rounded-md focus:outline-none focus:ring-0 focus:border-yellow-400" placeholder="Insira seu nome" value="{{old('name', $user['name'] ?? null)}}"/>
                 </div>
 
                 <div class="mt-3">
                     <label for="last_name" class="block text-base mb-2 font-semibold">Sobrenome</label>
-                    <input type="text" name="last_name" class="border w-full text-base px-2 py-1 rounded-md focus:outline-none focus:ring-0 focus:border-yellow-400" placeholder="Insira seu sobrenome" value="{{old('last_name')}}"/>
+                    <input type="text" name="last_name" class="border w-full text-base px-2 py-1 rounded-md focus:outline-none focus:ring-0 focus:border-yellow-400" placeholder="Insira seu sobrenome" value="{{old('last_name', $user['last_name'] ?? null)}}"/>
                 </div>
 
                 <div class="mt-3">
                     <label for="email" class="block text-base mb-2 font-semibold">E-mail <span class="text-yellow-500">*</span></label>
-                    <input type="email" name="email" class="border w-full text-base px-2 py-1 rounded-md focus:outline-none focus:ring-0 focus:border-yellow-400" placeholder="Insira seu e-mail" value="{{old('email')}}"/>
+                    <input type="email" name="email" class="border w-full text-base px-2 py-1 rounded-md focus:outline-none focus:ring-0 focus:border-yellow-400" placeholder="Insira seu e-mail" value="{{old('email', $user['email'] ?? null)}}"/>
                 </div>
 
                 <div class="mt-3">

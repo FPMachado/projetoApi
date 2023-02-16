@@ -4,6 +4,7 @@ use App\Http\Controllers\ApiController;
 use App\Http\Controllers\FilmesController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\SobreMimController;
+use App\Http\Controllers\SocialiteController;
 use Illuminate\Support\Facades\Route;
 
 

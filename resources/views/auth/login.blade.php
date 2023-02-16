@@ -47,7 +47,7 @@
 
                 <div class="mt-3 flex justify-center items-center">
                     <a class="text-2xl text-yellow-400 px-2" href="#"><i class="fab fa-google"></i> </a>
-                    <a class="text-2xl text-yellow-400 px-2" href="#"><i class="fab fa-facebook"></i> </a>
+                    <a class="text-2xl text-yellow-400 px-2" href="{{route('social.login', ['driver' => 'facebook'])}}"><i class="fab fa-facebook"></i> </a>
                 </div> 
             </div>
         </div>
