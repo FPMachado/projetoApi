@@ -65,3 +65,6 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 
 ## Configurar caminho do xampp (baixar cacert.pem)
 curl.cainfo = "D:\xampp\php\extras\ssl\cacert.pem"
+
+
+## Criar conta mailtrap.io

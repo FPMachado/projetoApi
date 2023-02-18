@@ -45,3 +45,4 @@ class SocialiteController extends Controller
         return explode(" ", $user_name);
     }
 }
+;

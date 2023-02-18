@@ -26,36 +26,9 @@ Route::middleware('guest')->group(function () {
 
     //AUTH API
     Route::get('social/auth/{driver}', [SocialiteController::class, 'redirecToProvider'])->name('social.login');
-    Route::get('login/facebook/callback', [SocialiteController::class, 'handleProviderCallback']);
+    Route::get('login/{driver}/callback', [SocialiteController::class, 'handleProviderCallback']);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    //ROTAS PARA GERENCIAMENTO DE UPDATE DE SENHA
     Route::get('forgot-password', [PasswordResetLinkController::class, 'create'])
                 ->name('password.request');
 
@@ -67,6 +40,7 @@ Route::middleware('guest')->group(function () {
 
     Route::post('reset-password', [NewPasswordController::class, 'store'])
                 ->name('password.update');
+
 });
 
 Route::middleware('auth')->group(function () {

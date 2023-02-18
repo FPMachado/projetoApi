@@ -1,36 +1,35 @@
-<x-guest-layout>
-    <x-auth-card>
-        <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
-        </x-slot>
+@extends('templates.login')
 
-        <div class="mb-4 text-sm text-gray-600">
-            {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
+@section('content')
+    @if ($errors->any())   
+        @foreach ($errors->all() as $erro)
+            <div class="text-center w-full bg-red-400 mb-3"> {{$erro}} </div>
+        @endforeach
+    @endif
+
+    @if (session('message'))
+        <div class="text-center w-full bg-green-400 mb-3"> {{session('message')}} </div>
+    @endif
+
+    <form action="{{ route('password.email') }}" method="POST"> 
+        @csrf
+        <div class="flex justify-center items-center" style="height: 595px !important;">
+            <div class="p-6 shadow-lg bg-gray-500 rounded-md" style="width:667px;">
+                <h1 class="text-3xl block text-center font-semibold text-yellow-400">Esqueceu sua senha ?</h1>
+
+                <div class="text-center">
+                    <span class="text-yellow-400">Não tem problema!<br>Insira abaixo o e-mail cadastrado que enviaremos um link para a criação da nova senha. </span>
+                </div>
+
+                <hr class="mt-3 mb-3">
+
+                <label for="email" class="block text-base mb-2 font-semibold">E-mail</label>
+
+                <div class="flex">
+                    <input type="email" style="width: 400px !important;" name="email" class="border text-base px-2 py-1 rounded-md focus:outline-none focus:ring-0 focus:border-yellow-400" placeholder="Insira o e-mail cadastrado"/>
+                    <button type="submit" style="width: 205px !important;" class="ml-3 border-2 border-yellow-400 bg-yellow-400 text-white py-1 rounded-md hover:bg-transparent hover:text-yellow-400 font-semibold"><i class="fas fa-envelope-open-text"></i> Eviar e-mail</button>
+                </div>
+            </div>
         </div>
-
-        <!-- Session Status -->
-        <x-auth-session-status class="mb-4" :status="session('status')" />
-
-        <!-- Validation Errors -->
-        <x-auth-validation-errors class="mb-4" :errors="$errors" />
-
-        <form method="POST" action="{{ route('password.email') }}">
-            @csrf
-
-            <!-- Email Address -->
-            <div>
-                <x-label for="email" :value="__('Email')" />
-
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
-            </div>
-
-            <div class="flex items-center justify-end mt-4">
-                <x-button>
-                    {{ __('Email Password Reset Link') }}
-                </x-button>
-            </div>
-        </form>
-    </x-auth-card>
-</x-guest-layout>
+    </form> 
+@endsection

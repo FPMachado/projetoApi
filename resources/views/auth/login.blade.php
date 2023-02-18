@@ -23,31 +23,31 @@
                 </div>
 
                 <div class="mt-3">
-                    <label for="senha" class="block text-base mb-2 font-semibold">Senha</label>
-                    <input type="password" name="password" class="border w-full text-base px-2 py-1 rounded-md focus:outline-none focus:ring-0 focus:border-yellow-400" placeholder="Insira sua senha"/>
+                    <label for="password" class="block text-base mb-2 font-semibold">Senha</label>
+                    <input style="width:300px;" type="password" id="password" name="password" class="border text-base px-2 py-1 rounded-l-lg focus:outline-none focus:ring-0 focus:border-yellow-400" placeholder="Insira sua senha" value="{{old('password')}}"/><i class="bg-yellow-400 hover:bg-yellow-300 far fa-eye-slash text-base px-2 py-1 rounded-r-lg" style="cursor: pointer" id="showPassword"></i>
                 </div>
 
                 <div class="mt-3 flex justify-between items-center">
                     <div>
-                        <input type="checkbox" name="remember-me">
-                        <label>Lembrar de mim</label> 
+                        <input type="checkbox" name="remember" id="remember-me">
+                        <label for="remember-me">Lembrar de mim</label> 
                     </div>
                     <div>
-                        <a class="text-yellow-400 font-semibold" href="#">Esqueceu a senha?</a>
+                        <a class="text-yellow-400 font-semibold hover:text-yellow-200" href="{{route('password.request')}}">Esqueceu a senha?</a>
                     </div>
                 </div>
 
                 <div class="mt-5">
                     <button type="submit" class="border-2 border-yellow-400 bg-yellow-400 text-white py-1 w-full rounded-md hover:bg-transparent hover:text-yellow-400 font-semibold">Entrar</button>
                 </div>
-                <span class="flex justify-end items-end text-yellow-400"><a href=" {{route('register')}} ">Criar conta</a></span>
+                <span class="flex justify-end items-end text-yellow-400 hover:text-yellow-200"><a href=" {{route('register')}} ">Criar conta</a></span>
                 <hr class="mt-3">
 
                 <span>Ou entre com suas redes sociais</span>
 
                 <div class="mt-3 flex justify-center items-center">
-                    <a class="text-2xl text-yellow-400 px-2" href="#"><i class="fab fa-google"></i> </a>
-                    <a class="text-2xl text-yellow-400 px-2" href="{{route('social.login', ['driver' => 'facebook'])}}"><i class="fab fa-facebook"></i> </a>
+                    <a class="text-2xl text-yellow-400 px-2" title="Login com o Github" href="{{route('social.login', ['driver' => 'github'])}}"><i class="fab fa-github"></i> </a>
+                    <a class="text-2xl text-yellow-400 px-2" title="Login com o Facebook" href="{{route('social.login', ['driver' => 'facebook'])}}"><i class="fab fa-facebook"></i> </a>
                 </div> 
             </div>
         </div>
