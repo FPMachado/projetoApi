@@ -68,3 +68,6 @@ curl.cainfo = "D:\xampp\php\extras\ssl\cacert.pem"
 
 
 ## Criar conta mailtrap.io
+
+## Criar link simbólico
+php artisan storage:link

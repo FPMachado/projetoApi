@@ -18,12 +18,12 @@ function changeTypeInputPassword() {
             if(passwordConfirmationField){
                 passwordConfirmationField.attr('type', 'text');
             }
-            $('#showPassword').removeClass("fal fa-eye-slash");
-            $('#showPassword').addClass("fal fa-eye");
+            $('#showPassword').removeClass("fal fa-eye");
+            $('#showPassword').addClass("fal fa-eye-slash");
             $(this).val('Hide');
         } else {
-            $('#showPassword').removeClass("fal fa-eye")
-            $('#showPassword').addClass("fal fa-eye-slash")
+            $('#showPassword').removeClass("fal fa-eye-slash")
+            $('#showPassword').addClass("fal fa-eye")
             passwordField.attr('type', 'password');
             if(passwordConfirmationField){
                 passwordConfirmationField.attr('type', 'password');
