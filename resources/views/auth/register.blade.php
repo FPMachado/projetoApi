@@ -33,12 +33,12 @@
 
                 <div class="mt-3">
                     <label for="password" class="block text-base mb-2 font-semibold">Senha <span class="text-yellow-500">*</span></label>
-                    <input style="width:300px;" type="password" id="password" name="password" class="border text-base px-2 py-1 rounded-l-lg focus:outline-none focus:ring-0 focus:border-yellow-400" placeholder="Insira novamente sua senha" value="{{old('password')}}"/><i class="bg-yellow-400 hover:bg-yellow-300 far fa-eye-slash text-base px-2 py-1 rounded-r-lg" style="cursor: pointer" id="showPassword"></i>
+                    <input style="width:300px;" type="password" id="password" name="password" class="border text-base px-2 py-1 rounded-l-lg focus:outline-none focus:ring-0 focus:border-yellow-400" placeholder="Insira novamente sua senha" value="{{old('password')}}"/><i class="bg-yellow-400 hover:bg-yellow-300 far fa-eye text-base px-2 py-1 rounded-r-lg" style="cursor: pointer" id="showPassword"></i>
                 </div>
                 
                 <div class="mt-3">
                     <label for="password_confirmation" class="block text-base mb-2 font-semibold">Confirmar Senha <span class="text-yellow-500">*</span></label>
-                    <input type="password" name="password_confirmation" class="border w-full text-base px-2 py-1 rounded-md focus:outline-none focus:ring-0 focus:border-yellow-400" placeholder="Insira sua senha" value="{{old('password_confirmation')}}"/>
+                    <input type="password" id="password_confirmation" name="password_confirmation" class="border w-full text-base px-2 py-1 rounded-md focus:outline-none focus:ring-0 focus:border-yellow-400" placeholder="Insira sua senha" value="{{old('password_confirmation')}}"/>
                 </div>
 
                 <hr class="mt-3">

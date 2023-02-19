@@ -27,7 +27,7 @@
 
                 <div class="flex">
                     <input type="email" style="width: 400px !important;" name="email" class="border text-base px-2 py-1 rounded-md focus:outline-none focus:ring-0 focus:border-yellow-400" placeholder="Insira o e-mail cadastrado"/>
-                    <button type="submit" style="width: 205px !important;" class="ml-3 border-2 border-yellow-400 bg-yellow-400 text-white py-1 rounded-md hover:bg-transparent hover:text-yellow-400 font-semibold"><i class="fas fa-envelope-open-text"></i> Eviar e-mail</button>
+                    <button type="submit" style="width: 205px !important;" class="ml-3 border-2 border-yellow-400 bg-yellow-400 text-white py-1 rounded-md hover:bg-transparent hover:text-yellow-400 font-semibold"><i class="fas fa-envelope-open-text"></i> Enviar e-mail</button>
                 </div>
             </div>
         </div>
