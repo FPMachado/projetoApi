@@ -1,14 +1,30 @@
 <?php
 
-namespace App\Models;
+namespace App\Providers;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Http\Request;
+use Illuminate\Support\ServiceProvider;
 
-class Filme extends Model
+class FilmeProvider extends ServiceProvider
 {
-    use HasFactory;
+    /**
+     * Register services.
+     *
+     * @return void
+     */
+    public function register()
+    {
+        //
+    }
+
+    /**
+     * Bootstrap services.
+     *
+     * @return void
+     */
+    public function boot()
+    {
+        //
+    }
 
     public static function getGenero(array $infoFilme)
     {
@@ -107,5 +123,11 @@ class Filme extends Model
     public static function getStatusFilme($infoFilme)
     {
         return ($infoFilme['status'] == "Planned") ? "Planejado" : "Lançado";
+    }
+
+    public static function getDataLancamento($infoFilme)
+    {
+        
+        return $infoFilme['release_date'];
     }
 }

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\SearchRequest;
 use App\Models\Elenco;
-use App\Models\Filme;
+use App\Providers\FilmeProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
@@ -40,18 +40,20 @@ class ApiController extends Controller
         $infoFilme          = $this->Http->get("https://api.themoviedb.org/3/movie/{$id}?api_key={$this->apiKey}&language=pt-BR&append_to_response=credits,release_dates")->json();
         $infoTrailer        = $this->Http->get("https://api.themoviedb.org/3/movie/{$id}/videos?api_key={$this->apiKey}&language=pt-BR")->json('results');
 
-        $titulo             = Filme::getTitulo($infoFilme);
-        $anoLancamento      = Filme::getAnoLancamento($infoFilme);
-        $tagLine            = Filme::getTagLine($infoFilme);
-        $nota               = Filme::getNotaFilme($infoFilme);
-        $genero             = Filme::getGenero($infoFilme['genres']);
-        $poster             = Filme::montaPoster($apiConfiguration['base_url'], $infoFilme, 300);
-        $sinopse            = Filme::getSinopse($infoFilme);
-        $trailer            = Filme::getTrailer($id, $infoTrailer);
-        $classificacao      = Filme::getClassificacao($infoFilme);
-        $orcamento          = Filme::getOrcamento($infoFilme);
-        $receita            = Filme::getReceita($infoFilme);
-        $status             = Filme::getStatusFilme($infoFilme);
+        $titulo             = FilmeProvider::getTitulo($infoFilme);
+        $anoLancamento      = FilmeProvider::getAnoLancamento($infoFilme);
+        $tagLine            = FilmeProvider::getTagLine($infoFilme);
+        $nota               = FilmeProvider::getNotaFilme($infoFilme);
+        $genero             = FilmeProvider::getGenero($infoFilme['genres']);
+        $poster             = FilmeProvider::montaPoster($apiConfiguration['base_url'], $infoFilme, 300);
+        $sinopse            = FilmeProvider::getSinopse($infoFilme);
+        $trailer            = FilmeProvider::getTrailer($id, $infoTrailer);
+        $classificacao      = FilmeProvider::getClassificacao($infoFilme);
+        $orcamento          = FilmeProvider::getOrcamento($infoFilme);
+        $receita            = FilmeProvider::getReceita($infoFilme);
+        $status             = FilmeProvider::getStatusFilme($infoFilme);
+        $dataLancamento     = FilmeProvider::getDataLancamento($infoFilme);
+        $miniPosterSrc      = FilmeProvider::montaPoster($apiConfiguration['base_url'], $infoFilme, 92);
 
         $infoEquipe = $infoFilme['credits']['crew'];
         
@@ -59,6 +61,6 @@ class ApiController extends Controller
         $nomeEscritor   = Elenco::getWriterName($infoEquipe);
         $idDiretor      = Elenco::getIdDirector($infoEquipe);
 
-        return view('show', compact('titulo', 'id', 'anoLancamento', 'tagLine', 'nota', 'genero', 'sinopse', 'poster', 'nomeDiretor', 'nomeEscritor', 'trailer', 'classificacao', 'orcamento', 'receita', 'status'));
+        return view('show', compact('titulo', 'id', 'anoLancamento', 'tagLine', 'nota', 'genero', 'sinopse', 'poster', 'nomeDiretor', 'nomeEscritor', 'trailer', 'classificacao', 'orcamento', 'receita', 'status', 'dataLancamento', 'miniPosterSrc'));
     }
 }

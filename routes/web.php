@@ -3,6 +3,7 @@
 use App\Http\Controllers\ApiController;
 use App\Http\Controllers\FilmesController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PersonalListController;
 use App\Http\Controllers\SendEmailsController;
 use App\Http\Controllers\SobreMimController;
 use App\Http\Controllers\SocialiteController;
@@ -26,7 +27,9 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/index', ApiController::class)->name('index');
+
 Route::any('/index/search', [ApiController::class, 'search'])->name('index.search');
+
 Route::get('/index/{id}', [ApiController::class, 'show'])->name('index.more');
 
 Route::post('/index/store/{id}',[FilmesController::class, 'store'])->name('index.store');
@@ -47,8 +50,6 @@ Route::get('/', function () {
 
 Route::get('envio-email', [SendEmailsController::class, 'handle']);
 
-// Route::get('envio-email', function(){
-//     $user = new User();
-//     return new SendEmails($user);
-//     // Mail::send(new SendEmails($user));
-// });
+Route::get('my-personal-list/{id}', PersonalListController::class)->name('personal-list');
+
+Route::post('my-personal-list/store/{id}', [PersonalListController::class, 'store'])->name('personal-list-store');

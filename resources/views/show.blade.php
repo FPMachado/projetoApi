@@ -7,10 +7,19 @@
             <div class="text-center w-full bg-red-400 mb-3"> {{ $erro }} </div>
         @endforeach
     @endif
-    <form action="{{route('index.store', $id)}}" method="post">
+
+    @if (session('message'))
+        <div class="text-center w-full bg-green-400 mb-3"> {{session('message')}} </div>
+    @endif
+
+    <form action="{{route('personal-list-store', $id)}}" method="post">
         @csrf 
         <input type="hidden" name="movie_id" value="{{$id}}">
-        <input type="hidden" name="movie" value="{{$titulo}}">
+        <input type="hidden" name="note" value="{{$nota}}">
+        <input type="hidden" name="movie_name" value="{{$titulo}}">
+        <input type="hidden" name="release_date" value="{{$dataLancamento}}">
+        <input type="hidden" name="synopsis" value="{{$sinopse}}">
+        <input type="hidden" name="img_poster" value="{{$miniPosterSrc}}">
         <div class="container mx-auto py-2 w-full bg-gray-700 rounded-lg mt-3">
             <div class="flex">
                 <div class="px-3 py-3">

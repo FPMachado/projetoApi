@@ -7,13 +7,10 @@ use Illuminate\Support\Facades\Http;
 
 class FilmesController extends Controller
 {
-    public function store(Request $request)
-    {
-        $id = $request->input("movie_id");
-        $title = $request->movie;
-        var_dump("<pre>", $id, $title, "</pre>"); die;
-        exit;
-    }
+    // public function store(Request $request)
+    // {
+        
+    // }
 
     public function teste(Request $request)
     {

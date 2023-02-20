@@ -27,7 +27,7 @@
                     <th scope="col" class="py-3 px-6 ">Nota</th>
                     <th scope="col" class="py-3 px-6">Nome</th>
                     <th scope="col" class="py-3 px-6">Data de Lançamento</th>
-                    <th scope="col" class="py-3 px-6">Utilitários</th>
+                    <th scope="col" class="py-3 px-6">Opções</th>
                 </tr>
             </thead>
             @foreach ($filmes as $filme)

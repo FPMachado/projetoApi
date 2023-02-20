@@ -14,33 +14,30 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest')->group(function () {
     //TELA DE CADASTRO DE CONTA
-    Route::get('register', [RegisteredUserController::class, 'create'])
-                ->name('register');
+    Route::get('register', [RegisteredUserController::class, 'create'])->name('register');
+
     //REGISTRAR NOVO USUÁRIO
     Route::post('register', [RegisteredUserController::class, 'store']);
 
     //TELA DE LOGIN
-    Route::get('login', [AuthenticatedSessionController::class, 'create'])
-                ->name('login');
+    Route::get('login', [AuthenticatedSessionController::class, 'create'])->name('login');
+
     //EFETUAR LOGIN
     Route::post('login', [AuthenticatedSessionController::class, 'store']);
 
-    //AUTH API
+    //ROTAS LOGIN SOCIAL
     Route::get('social/auth/{driver}', [SocialiteController::class, 'redirecToProvider'])->name('social.login');
     Route::get('login/{driver}/callback', [SocialiteController::class, 'handleProviderCallback']);
 
     //ROTAS PARA GERENCIAMENTO DE UPDATE DE SENHA
-    Route::get('forgot-password', [PasswordResetLinkController::class, 'create'])
-                ->name('password.request');
+    Route::get('forgot-password', [PasswordResetLinkController::class, 'create'])->name('password.request');
 
-    Route::post('forgot-password', [SendEmailsController::class, 'sendLinkResetPassword'])
-                ->name('password.email');
+    //ROTA RESPOSÁVEL POR ENVIAR O LINK DE REDEFINIÇÃO DA SENHA
+    Route::post('forgot-password', [SendEmailsController::class, 'sendLinkResetPassword'])->name('password.email');
 
-    Route::get('reset-password/{token}', [NewPasswordController::class, 'create'])
-                ->name('password.reset');
+    Route::get('reset-password/{token}', [NewPasswordController::class, 'create'])->name('password.reset');
 
-    Route::post('reset-password', [NewPasswordController::class, 'store'])
-                ->name('password.update');
+    Route::post('reset-password', [NewPasswordController::class, 'store'])->name('password.update');
 
 });
 
