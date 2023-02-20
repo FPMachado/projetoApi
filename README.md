@@ -71,3 +71,6 @@ curl.cainfo = "D:\xampp\php\extras\ssl\cacert.pem"
 
 ## Criar link simbólico
 php artisan storage:link
+
+## Comnado para fila
+php artisan queue:work

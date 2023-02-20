@@ -37,8 +37,9 @@
             @if (Auth::check())
                 <div class="relative">
                     <button class="bg-yellow-500 hover:bg-yellow-300 duration-500 border flex item-center border-gray-300 rounded px-3 py-2 font-semibold text-sm text-black shadow" onclick='userButton()'>Olá {{auth()->user()->name}} <i class="text-sm fas fa-chevron-down  w-3 h-3 ml-2"></i></button> 
-                    <div id="dropDown" class="inline-block absolute bg-white border-gray-500 py-1 shadow-md rounded-md" style="width:137px; display: none">
+                    <div id="dropDown" class="inline-block absolute bg-white border-gray-500 py-1 shadow-md rounded-md" style="width:137px; display: none; margin-left: -32px !important;">
                         <a class="block text-sm text-black px-3 py-1 bg-white hover:bg-yellow-500 duration-500" href="">Minha Lista</a>
+                        <a class="block text-sm text-black px-3 py-1 bg-white hover:bg-yellow-500 duration-500" href="">Meu Perfil</a>
                         <a class="block text-sm text-black px-3 py-1 bg-white hover:bg-yellow-500 duration-500" href="{{route('logout')}}">Sair</a>
                     </div>
                 </div>

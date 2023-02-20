@@ -3,8 +3,12 @@
 use App\Http\Controllers\ApiController;
 use App\Http\Controllers\FilmesController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\SendEmailsController;
 use App\Http\Controllers\SobreMimController;
 use App\Http\Controllers\SocialiteController;
+use App\Mail\SendEmails;
+use App\Models\User;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
 
@@ -40,3 +44,11 @@ require __DIR__.'/auth.php';
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('envio-email', [SendEmailsController::class, 'handle']);
+
+// Route::get('envio-email', function(){
+//     $user = new User();
+//     return new SendEmails($user);
+//     // Mail::send(new SendEmails($user));
+// });
