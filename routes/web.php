@@ -53,3 +53,4 @@ Route::get('envio-email', [SendEmailsController::class, 'handle']);
 Route::get('my-personal-list/{id}', PersonalListController::class)->name('personal-list');
 
 Route::post('my-personal-list/store/{id}', [PersonalListController::class, 'store'])->name('personal-list-store');
+Route::get('my_personal_list/{id}/edit/movie/{list_id}', [PersonalListController::class, 'show'])->name('personal-list-edit');

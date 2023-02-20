@@ -11,7 +11,7 @@ class PersonalListController extends Controller
     public function __invoke()
     {
         $personal_movies = DB::table('personal_list')->where('user_id', auth()->user()->id)->paginate(4);
-        return view('personal-list', compact('personal_movies'));
+        return view('personal_list.personal-list', compact('personal_movies'));
     }
 
     /**
@@ -19,7 +19,6 @@ class PersonalListController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->img_poster);
         PersonalList::create([
             'user_id' => auth()->user()->id,
             'note' => $request->note,
@@ -30,5 +29,11 @@ class PersonalListController extends Controller
         ]);
 
         return redirect()->back()->with('message', "Filme adicionado na sua lista pessoal!");
+    }
+
+    public function show(Request $request)
+    {
+        $teste = PersonalList::where('personal_list_id', $request->list_id)->first();
+        return view('personal_list.personal-list-show', compact('teste'));
     }
 }

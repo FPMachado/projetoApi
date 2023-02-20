@@ -12,4 +12,9 @@ class PersonalList extends Model
 
     protected $table = "personal_list";
     protected $fillable = ['movie_id', 'user_id', 'note', 'name', 'img_src' ,'release_date', 'synopsis', 'assisted_in'];
+
+    public function users()
+    {
+        return $this->belongsTo(User::class, 'user_id', 'id');
+    }
 }
