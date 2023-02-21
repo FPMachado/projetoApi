@@ -22,4 +22,10 @@ class SendEmailsController extends Controller
 
         return redirect()->back()->with("message", "Enviamos um email para você. Verifique sua caixa de entrada!");
     }
+
+    public static function sendEmailAddMovie($user_id)
+    {
+        $user = User::findOrFail($user_id);
+        
+    }
 }

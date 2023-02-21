@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="{{ url('css/app.css') }}">
     <script src="https://code.jquery.com/jquery-1.9.1.js"></script>
     <script src="{{url('js/jquery.js')}}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 </head>
 <body class="bg-gray-900">
     <nav class="p-5 bg-black shadow md:flex md:items-center md:justify-between">

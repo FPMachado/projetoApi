@@ -20,6 +20,7 @@ class CreatePersonalListTable extends Migration
             $table->string('name');
             $table->date('release_date');
             $table->longText('synopsis')->nullable();
+            $table->longText('observation')->nullable();
             $table->string('assisted_in')->nullable();
             $table->string('img_src')->nullable();
             $table->timestamps();

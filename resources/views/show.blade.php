@@ -23,7 +23,7 @@
         <div class="container mx-auto py-2 w-full bg-gray-700 rounded-lg mt-3">
             <div class="flex">
                 <div class="px-3 py-3">
-                    <img class="rounded-lg shadow-2xl" src="{{ $poster }}" alt="">
+                    <img class="rounded-lg shadow-2xl border border-yellow-500" src="{{ $poster }}" alt="">
                 </div>
 
                 <div class="flex-1 ml-3 mt-3 w-64">

@@ -32,3 +32,28 @@ function changeTypeInputPassword() {
         }
     });
 }
+
+function assited(){
+    Swal.fire({
+        title: 'Atenção',
+        text: 'Tem certeza que deseja marcar este filme como assitido?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Sim',
+        cancelButtonText: "Não"
+    }).then((result) => {
+        if(result.isConfirmed){
+            console.log(getDate());
+            $("#assisted_in").val(getDate());
+        }
+    })
+}
+
+function getDate(){
+    var data = new Date(),
+        dia  = data.getDate(),
+        mes  = data.getMonth() + 1,
+        ano  = data.getFullYear();
+    mes = ((mes <10) ? "0"+mes : '');
+    return [ano, mes, dia].join('-');
+}
