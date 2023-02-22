@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\JobAddMovie;
 use App\Jobs\JobemailResetPassword;
 use App\Mail\LinkResetPassword;
+use App\Models\PersonalList;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 
 class SendEmailsController extends Controller
@@ -23,9 +26,13 @@ class SendEmailsController extends Controller
         return redirect()->back()->with("message", "Enviamos um email para você. Verifique sua caixa de entrada!");
     }
 
-    public static function sendEmailAddMovie($user_id)
+    public static function sendEmailAddMovie($user_id, $list_id)
     {
         $user = User::findOrFail($user_id);
-        
+        $data_personal_list = DB::table('personal_list')->where('personal_list_id', "=", $list_id)->first();
+
+        JobAddMovie::dispatch($user, $data_personal_list)->delay(now()->addSecond('5'));
+
+        return redirect()->intended();
     }
 }

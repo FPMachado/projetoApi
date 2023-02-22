@@ -47,7 +47,7 @@
                 <textarea class="border resize-y text-base px-2 py-1 rounded-md focus:outline-none focus:ring-0 focus:border-yellow-400" name="observation" id="observation" cols="61" rows="5">{{$data_movie->observation}} </textarea>
                 <div class="flex">
                     <button class="bg-green-500 hover:bg-green-400 rounded-lg py-3 px-3" style="width: 176px;" type="submit">Salvar alterações</button>
-                    <button class="bg-red-500 hover:bg-red-400 rounded-lg py-3 px-3 ml-32" style="width: 176px;">Remover da Lista</button>
+                    <button class="bg-red-500 hover:bg-red-400 rounded-lg py-3 px-3 ml-32" type="button" style="width: 176px;">Remover da Lista</button>
                 </div>
             </div>
         </div>
