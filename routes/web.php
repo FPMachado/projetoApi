@@ -54,4 +54,5 @@ Route::get('my-personal-list/{id}', PersonalListController::class)->name('person
 
 Route::post('my-personal-list/store/{id}', [PersonalListController::class, 'store'])->name('personal-list-store');
 Route::get('my_personal_list/{id}/edit/movie/{list_id}', [PersonalListController::class, 'show'])->name('personal-list-edit');
-Route::post('my_personal_list/{id}/update/movie/{personal_list_id}', [PersonalListController::class, 'update'])->name('personal-list-update');
+Route::put('my_personal_list/{id}/update/movie/{personal_list_id}', [PersonalListController::class, 'update'])->name('personal-list-update');
+Route::delete('my_personal_list/{id}/delete/movie/{personal_list_id}', [PersonalListController::class, 'destroy'])->name('personal-list-destroy');

@@ -14,7 +14,7 @@ class CreatePersonalListTable extends Migration
     public function up()
     {
         Schema::create('personal_list', function (Blueprint $table) {
-            $table->id('personal_list_id');
+            $table->id();
             $table->unsignedBigInteger('user_id')->unsigned();
             $table->decimal('note', 2, 1);
             $table->string('name');

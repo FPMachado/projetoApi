@@ -33,14 +33,18 @@ class PersonalListController extends Controller
 
     public function show(Request $request)
     {
-        $data_movie = PersonalList::where('personal_list_id', $request->list_id)->first();
+        $data_movie = PersonalList::where('id', $request->list_id)->first();
         return view('personal_list.personal-list-show', compact('data_movie'));
     }
 
     public function update(Request $request)
     {
+        // if($_POST['delete']){
+        //     return $this->destroy($request);
+        // }
+
         //TODO VERIFICAR FINDORFAIL COM ERRO
-        $data_list = PersonalList::where('personal_list_id',$request->personal_list_id);
+        $data_list = PersonalList::where('id',$request->personal_list_id)->first();
 
         $data_list->update([
             'note' => $request->note,
@@ -49,10 +53,15 @@ class PersonalListController extends Controller
             'synopsis' => $request->synopsis,
             'observation' => $request->observation,
         ]);
-
+        // dd($request->id);
         //TODO pOSSIBILIDADE DE CRIAR UMA TABELA PIVÔ E UM MODEL FILME
-        SendEmailsController::sendEmailAddMovie($request->id, $request->personal_list_id);
+        SendEmailsController::sendEmailAddMovie($data_list->user_id, $request->id);
 
         return redirect()->back()->with('message', 'Informações do filme da sua lista atualizada!');
+    }
+
+    public function destroy(PersonalList $personal_list)
+    {
+        dd($personal_list);
     }
 }

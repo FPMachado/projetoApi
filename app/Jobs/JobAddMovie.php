@@ -26,11 +26,11 @@ class JobAddMovie implements ShouldQueue
      *
      * @return void
      */
-    public function __construct(User $data_user, $data_personal_list)
+    public function __construct(User $data_user, PersonalList $data_personal_list)
     {
+        dd($data_personal_list);
         $this->user = $data_user;
         $this->data = $data_personal_list;
-
     }
     
     /**
@@ -40,6 +40,6 @@ class JobAddMovie implements ShouldQueue
      */
     public function handle()
     {
-        return Mail::send(new MailInformativeMovieUpdated($this->user, $this->data));
+        Mail::send(new MailInformativeMovieUpdated($this->user, $this->data));
     }
 }
