@@ -8,6 +8,7 @@ use App\Http\Controllers\SendEmailsController;
 use App\Http\Controllers\SobreMimController;
 use App\Http\Controllers\SocialiteController;
 use App\Mail\SendEmails;
+use App\Models\PersonalList;
 use App\Models\User;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
@@ -24,7 +25,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
+Route::controller(PersonalListController::class)
+    ->middleware(['auth'])
+    ->prefix('my-personallist/{user}')
+    ->group(function(){
+    Route::get('/movies', 'index')->name('my-personal-list.movie.index');
+    Route::post('/movies', 'store')->name('my-personal-list.movie.store');
+    Route::get('/movies/{movie}', 'edit')->name('my-personal-list.movie.edit');
+    Route::put('/movies/{movie}', 'update')->name('my-persoanl-list.movie.update');
+    Route::get('/movies/{movie}', 'show')->name('my-personal-list.movie.show');
+    Route::delete('/movies/{movie}', 'delete')->name('my-personal-list.movie.delete');
+});
 
 Route::get('/index', ApiController::class)->name('index');
 
@@ -43,6 +54,7 @@ Route::get('/dashboard', function(){
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
+require __DIR__.'/movie.php';
 
 Route::get('/', function () {
     return view('welcome');
