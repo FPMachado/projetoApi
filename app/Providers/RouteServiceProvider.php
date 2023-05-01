@@ -17,7 +17,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    public const INDEX = '/index';
+    public const INDEX = '/movies';
 
     /**
      * The controller namespace for the application.

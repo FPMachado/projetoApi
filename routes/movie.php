@@ -4,11 +4,14 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MovieController;
 
 Route::controller(MovieController::class)
+    ->prefix('/movies')
     ->group(function(){
-    Route::get('/movies', 'index')->name('movie.index');
-    Route::post('/movies', 'store')->name('movie.store');
-    Route::get('/movies/{movie}', 'edit')->name('movie.edit');
-    Route::put('/movies/{movie}', 'update')->name('movie.update');
-    Route::get('/movies/{movie}', 'show')->name('movie.show');
-    Route::delete('movies/{movie}', 'delete')->name('movie.delete');
+    //Route name = file.prefix.method
+    Route::get('', 'index')->name('movie.index');
+    Route::post('', 'store')->name('movie.store');
+    Route::post('','search')->name('movie.search');
+    Route::get('/{movie}', 'edit')->name('movie.edit');
+    Route::put('/{movie}', 'update')->name('movie.update');
+    Route::get('/{movie}', 'show')->name('movie.show');
+    Route::delete('/{movie}', 'delete')->name('movie.delete');
 });

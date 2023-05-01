@@ -21,8 +21,8 @@ class ApiController extends Controller
 
     public function __invoke()
     {  
-        $filmes = $this->Http->get("https://api.themoviedb.org/3/discover/movie?api_key={$this->apiKey}&language=pt-BR&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate")->json('results');
-        return view('index', compact('filmes'));
+        // $filmes = $this->Http->get("https://api.themoviedb.org/3/discover/movie?api_key={$this->apiKey}&language=pt-BR&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate")->json('results');
+        // return view('index', compact('filmes'));
     }
 
     public function search(SearchRequest $request)

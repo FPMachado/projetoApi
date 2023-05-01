@@ -18,18 +18,18 @@ class MovieDTO
     public function __construct()
     {
         $this->base_url = config('tmdb.base_url');
-        $this->api_key = config('tmdb.api_key');    
+        $this->api_key = config('tmdb.api_key');
     }
 
     public function list(int $page = 1)
     {
         $response = Http::get("$this->base_url/3/discover/movie", [
-            'page' => $page, 
-            'api_key' => $this->api_key,
-            'language' => 'pt-BR',
-            'sort_by' => 'popularity.desc',
-            'include_adult' => false,
-            'include_video' => false,
+            'page'                          => $page,
+            'api_key'                       => $this->api_key,
+            'language'                      => 'pt-BR',
+            'sort_by'                       => 'popularity.desc',
+            'include_adult'                 => false,
+            'include_video'                 => false,
             'with_watch_monetization_types' => 'flatrate'
         ]);
 
@@ -50,5 +50,4 @@ class MovieDTO
     {
         return $this->collection;
     }
-
 }

@@ -6,7 +6,7 @@ use App\Models\PersonalList;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class PersonalListController extends Controller
+class UserPersonalListController extends Controller
 {
     public function __invoke()
     {

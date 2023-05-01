@@ -14,7 +14,7 @@
 <body class="bg-gray-900">
     <nav class="p-5 bg-black shadow md:flex md:items-center md:justify-between">
         <div class="flex justify-between items-center text-yellow-500">
-            <a href="{{ route('index') }}">
+            <a href="{{ route('movie.index') }}">
                 <span class="hover:text-yellow-300 text-2xl font-sans cursor-pointer">
                     <i class="fas fa-home"></i>
                     <span class="font-sans cursor-pointer">HOME</span> 
