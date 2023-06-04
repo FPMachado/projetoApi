@@ -17,9 +17,9 @@
         <input type="hidden" name="movie_id" value="{{$movie['id']}}">
         <input type="hidden" name="note" value="{{$movie['vote_average']}}">
         <input type="hidden" name="movie_name" value="{{$movie['title']}}">
-        <input type="hidden" name="release_date" value="{{Carbon\Carbon::create($movie['release_date'])->format('d/m/Y')}}">
+        <input type="hidden" name="release_date" value="{{Carbon\Carbon::create($movie['release_date'])->format('Y/m/d')}}">
         <input type="hidden" name="synopsis" value="{{$movie['overview']}}">
-        <input type="hidden" name="img_poster" value="{{$movie['poster_url']}}">
+        <input type="hidden" name="img_poster" width="50" value="{{$movie['poster_url']}}">
         <div class="container mx-auto py-2 w-full bg-gray-700 rounded-lg mt-3">
             <div class="flex">
                 <div class="px-3 py-3">
@@ -33,7 +33,6 @@
                         <div class="relative w-12 h-12 border-double border-4 bg-black text-white border-white rounded flex justify-center items-center text-center p-5 shadow-xl">
                             <span class="absolute text-sm text-center text-white">
                                 @foreach ($movie['release_dates'] as $results)
-                                {{-- @dd($results) --}}
                                     @foreach ($results as $item)
                          
                                         @if ($item['iso_3166_1'] == "BR")

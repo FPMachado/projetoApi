@@ -24,7 +24,7 @@
             @foreach ($personal_movies as $movie)
                 <tbody class="text-xl">  
                     <tr class=" hover:bg-yellow-500 rounded border-collapse border border-black">
-                        <td class="flex justify-center"><img class="rounded-lg shadow-2xl" src={{ $movie->img_src }} alt=""></td>
+                        <td class="flex justify-center"><img class="rounded-lg shadow-2xl" src={{ $movie->img_src }} width="90"></td>
                         <td class="text-center"> {{$movie->note}} </td>
                         <td class="text-center"> {{$movie->name}} </td>
                         <td class="text-center"> {{$movie->release_date}} </td>
