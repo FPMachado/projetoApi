@@ -12,6 +12,10 @@
         <div class="text-center w-full bg-green-400 mb-3"> {{session('message')}} </div>
     @endif
 
+    @if (session('warning'))
+        <div class="text-center w-full bg-yellow-400 mb-3"> {{session('warning')}} </div>
+    @endif
+
     <form action="{{route('personal-list-store', $movie['id'])}}" method="post">
         @csrf 
         <input type="hidden" name="movie_id" value="{{$movie['id']}}">

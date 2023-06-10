@@ -5,12 +5,31 @@ namespace App\Http\Controllers;
 use App\Http\Requests\Movie\MovieIndexRequest;
 use App\Http\Requests\Movie\MovieSearchRequest;
 use App\Http\Requests\Movie\MovieShowRequest;
+use App\Models\Movies;
+use Illuminate\Http\Request;
 
 class MovieController extends Controller
 {
     final public function index(MovieIndexRequest $request)
     {
         return $request->handle()->view();
+    }
+
+    public static function store(Request $request)
+    {
+
+        if(!empty(Movies::where('id', $request->movie_id)->first())){
+            return false;
+        }
+
+        Movies::create([
+            'id'            => $request->movie_id,
+            'note'          => $request->note,
+            'name'          => $request->movie_name,
+            'release_date'  => $request->release_date,
+            'image_src'     => $request->img_poster,
+            'synopsis'      => $request->synopsis,
+        ]);
     }
 
     final public function search(MovieSearchRequest $request)

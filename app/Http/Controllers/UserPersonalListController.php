@@ -11,6 +11,7 @@ class UserPersonalListController extends Controller
     public function __invoke()
     {
         $personal_movies = DB::table('personal_list')->where('user_id', auth()->user()->id)->paginate(4);
+        dd($personal_movies);
         return view('personal_list.personal-list', compact('personal_movies'));
     }
 
@@ -19,14 +20,18 @@ class UserPersonalListController extends Controller
      */
     public function store(Request $request)
     {
+        if(!empty(PersonalList::where('movie_id', $request->movie_id)->first())){
+            return redirect()->back()->with('warning', "Você já possui este filme em sua lista");
+        }
+
+        MovieController::store($request);
+
         PersonalList::create([
             'user_id' => auth()->user()->id,
             'note' => $request->note,
-            'name' => $request->movie_name,
-            'release_date' => $request->release_date,
-            'synopsis' => $request->synopsis,
-            'img_src' => $request->img_poster,
+            'movie_id' => $request->movie_id,
         ]);
+
 
         return redirect()->back()->with('message', "Filme adicionado na sua lista pessoal!");
     }
