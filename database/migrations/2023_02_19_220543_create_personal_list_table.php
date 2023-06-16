@@ -18,7 +18,7 @@ class CreatePersonalListTable extends Migration
             $table->unsignedBigInteger('user_id')->unsigned();
             $table->unsignedBigInteger('movie_id')->unsigned();
             $table->decimal('note', 2, 1);
-            $table->longText('observation')->nullable();
+            $table->string('observation')->nullable();
             $table->string('assisted_in')->nullable();
             $table->timestamps();
             

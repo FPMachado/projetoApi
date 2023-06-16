@@ -56,29 +56,23 @@ class UserPersonalListController extends Controller
 
     public function update(Request $request)
     {
-        // if($_POST['delete']){
-        //     return $this->destroy($request);
-        // }
-
-        //TODO VERIFICAR FINDORFAIL COM ERRO
-        $data_list = PersonalList::where('id',$request->personal_list_id)->first();
-
+        $data_list = PersonalList::where('movie_id', $request->movie_id)->where('user_id', auth()->user()->id)->first();
+        dd($request);
         $data_list->update([
-            'note' => $request->note,
-            'release_date' => $request->release_date,
+            'note' => number_format($request->note, 2, ".", "."),
             'assisted_in' =>  $request->assisted_in,
-            'synopsis' => $request->synopsis,
             'observation' => $request->observation,
         ]);
+        dd($data_list);
         // dd($request->id);
         //TODO pOSSIBILIDADE DE CRIAR UMA TABELA PIVÔ E UM MODEL FILME
-        SendEmailsController::sendEmailAddMovie($data_list->user_id, $request->id);
+        // SendEmailsController::sendEmailAddMovie($data_list->user_id, $request->id);
 
         return redirect()->back()->with('message', 'Informações do filme da sua lista atualizada!');
     }
 
     public function destroy(PersonalList $personal_list)
     {
-        dd($personal_list);
+        // dd($personal_list);
     }
 }

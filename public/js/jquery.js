@@ -43,7 +43,6 @@ function assited(){
         cancelButtonText: "Não"
     }).then((result) => {
         if(result.isConfirmed){
-            console.log(getDate());
             $("#assisted_in").val(getDate());
         }
     })
