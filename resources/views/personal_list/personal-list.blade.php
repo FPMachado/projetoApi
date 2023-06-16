@@ -22,19 +22,20 @@
                 </tr>
             </thead>
             @foreach ($personal_movies as $movie)
+            {{-- @dd($personal_movies['user_id']) --}}
                 <tbody class="text-xl">  
                     <tr class=" hover:bg-yellow-500 rounded border-collapse border border-black">
                         <td class="flex justify-center"><img class="rounded-lg shadow-2xl" src={{ $movie->img_src }} width="90"></td>
                         <td class="text-center"> {{$movie->note}} </td>
                         <td class="text-center"> {{$movie->name}} </td>
                         <td class="text-center"> {{$movie->release_date}} </td>
-                        <td class="text-center" title="Editar informações"> <a href=" {{route('personal-list-edit', ['id' => $movie->user_id, 'list_id' => $movie->id])}} "><i class="fas fa-edit" style="color: rgb(255, 255, 255)"></i></a></td>
+                        <td class="text-center" title="Editar informações"> <a href=" {{route('personal-list-edit', ['id' => auth()->user()->id, 'list_id' => $movie->id])}} "><i class="fas fa-edit" style="color: rgb(255, 255, 255)"></i></a></td>
                         <td class="text-center" title="Excluir da minha lista"> <a href=" "><i class="fas fa-times" style="color: rgb(238, 10, 10)"></i></a></td>
                         <td class="text-center" title="Marcar como assistido"> <a href=" "><i class="fas fa-check" style="color: rgb(24, 240, 4)"></i></a></td>
                     </tr>
                 </tbody>
             @endforeach
         </table>
-        {{ $personal_movies->links() }}
+        {{-- {{ $personal_movies->links() }} --}}
     </div>
 @endsection

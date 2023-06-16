@@ -18,7 +18,7 @@ class CreateMovieTable extends Migration
             $table->string('note');
             $table->string('name');
             $table->timestamp('release_date');
-            $table->string('img_src')->nullable();
+            $table->string('img_src');
             $table->longText('synopsis')->nullable();
             $table->timestamps();
         });

@@ -21,14 +21,14 @@ class MovieController extends Controller
         if(!empty(Movies::where('id', $request->movie_id)->first())){
             return false;
         }
-
+        // dd($request->img_poster);
         Movies::create([
             'id'            => $request->movie_id,
             'note'          => $request->note,
             'name'          => $request->movie_name,
-            'release_date'  => $request->release_date,
-            'image_src'     => $request->img_poster,
+            'img_src'       => $request->img_poster,
             'synopsis'      => $request->synopsis,
+            'release_date'  => $request->release_date,
         ]);
     }
 

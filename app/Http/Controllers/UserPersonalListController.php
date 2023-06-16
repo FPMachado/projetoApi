@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Movies;
 use App\Models\PersonalList;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -10,8 +11,13 @@ class UserPersonalListController extends Controller
 {
     public function __invoke()
     {
-        $personal_movies = DB::table('personal_list')->where('user_id', auth()->user()->id)->paginate(4);
-        dd($personal_movies);
+        // $personal_movies = DB::table('personal_list')->where('user_id', auth()->user()->id)->paginate(4);
+        $movies = DB::table('personal_list')->where('user_id', auth()->user()->id)->pluck('movie_id');
+        $personal_movies = [];
+        foreach ($movies as $key => $movie) {
+            $personal_movies[] =  DB::table('movies')->where('id', $movie)->first();
+        }
+
         return view('personal_list.personal-list', compact('personal_movies'));
     }
 
@@ -20,11 +26,16 @@ class UserPersonalListController extends Controller
      */
     public function store(Request $request)
     {
-        if(!empty(PersonalList::where('movie_id', $request->movie_id)->first())){
-            return redirect()->back()->with('warning', "Você já possui este filme em sua lista");
+        $movie_exists = PersonalList::where('movie_id', $request->movie_id)->where('user_id', auth()->user()->id)->first();
+        $movie        = Movies::where('id', $request->movie_id)->first();
+
+        if(empty($movie)){
+            MovieController::store($request);
         }
 
-        MovieController::store($request);
+        if(!empty($movie_exists)){
+            return redirect()->back()->with('warning', "Você já possui este filme em sua lista");
+        }
 
         PersonalList::create([
             'user_id' => auth()->user()->id,
@@ -38,8 +49,9 @@ class UserPersonalListController extends Controller
 
     public function show(Request $request)
     {
-        $data_movie = PersonalList::where('id', $request->list_id)->first();
-        return view('personal_list.personal-list-show', compact('data_movie'));
+        $personal_data = PersonalList::where('user_id', auth()->user()->id)->where('movie_id', $request->list_id)->first();
+        $data_movie = DB::table('movies')->where('id',$request->list_id)->first();
+        return view('personal_list.personal-list-show', compact('data_movie', 'personal_data'));
     }
 
     public function update(Request $request)
