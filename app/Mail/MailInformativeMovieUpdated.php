@@ -2,6 +2,7 @@
 
 namespace App\Mail;
 
+use App\Models\Movies;
 use App\Models\PersonalList;
 use App\Models\User;
 use Illuminate\Bus\Queueable;
@@ -15,16 +16,18 @@ class MailInformativeMovieUpdated extends Mailable
 
     protected $user;
     protected $data_movies;
+    protected $movie;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct(User $user, PersonalList $data_personal_list)
+    public function __construct(User $user, PersonalList $data_personal_list, Movies $movie)
     {
         $this->user = $user;
         $this->data_movies = $data_personal_list;
+        $this->movie = $movie;
     }
 
     /**
@@ -36,6 +39,6 @@ class MailInformativeMovieUpdated extends Mailable
     {
         $this->subject("Nova mudança nos seus Filmes!");
         $this->to($this->user->email);
-        return $this->markdown('mail.informativeMovieUpdatedMail', ['user' => $this->user, 'data_movies' => $this->data_movies]);
+        return $this->markdown('mail.informativeMovieUpdatedMail', ['user' => $this->user, 'data_movies' => $this->data_movies, 'movie' => $this->movie]);
     }
 }

@@ -80,10 +80,8 @@ class UserPersonalListController extends Controller
             'assisted_in' =>  $request->assisted_in,
             'observation' => $request->observation,
         ]);
-        // dd($data_list);
-        // dd($request->id);
-        //TODO pOSSIBILIDADE DE CRIAR UMA TABELA PIVÔ E UM MODEL FILME
-        // SendEmailsController::sendEmailAddMovie($data_list->user_id, $request->id);
+        
+        SendEmailsController::sendEmailAddMovie($data_list->user_id, $request->movie_id);
 
         return redirect()->back()->with('message', 'Informações do filme da sua lista atualizada!');
     }

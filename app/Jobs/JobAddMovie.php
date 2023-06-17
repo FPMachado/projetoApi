@@ -3,6 +3,7 @@
 namespace App\Jobs;
 
 use App\Mail\MailInformativeMovieUpdated;
+use App\Models\Movies;
 use App\Models\PersonalList;
 use App\Models\User;
 use Illuminate\Bus\Queueable;
@@ -20,17 +21,18 @@ class JobAddMovie implements ShouldQueue
     protected $tries = 3;
     protected $user;
     protected $data;
+    protected $movie;
 
     /**
      * Create a new job instance.
      *
      * @return void
      */
-    public function __construct(User $data_user, PersonalList $data_personal_list)
+    public function __construct(User $data_user, PersonalList $data_personal_list, Movies $movie)
     {
-        dd($data_personal_list);
         $this->user = $data_user;
         $this->data = $data_personal_list;
+        $this->movie = $movie;
     }
     
     /**
@@ -40,6 +42,6 @@ class JobAddMovie implements ShouldQueue
      */
     public function handle()
     {
-        Mail::send(new MailInformativeMovieUpdated($this->user, $this->data));
+        Mail::send(new MailInformativeMovieUpdated($this->user, $this->data, $this->movie));
     }
 }
