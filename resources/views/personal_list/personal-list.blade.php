@@ -25,8 +25,8 @@
             {{-- @dd($personal_movies['user_id']) --}}
                 <tbody class="text-xl">  
                     <tr class=" hover:bg-yellow-500 rounded border-collapse border border-black">
-                        <td class="flex justify-center"><img class="rounded-lg shadow-2xl" src={{ $movie->img_src }} width="50"></td>
-                        <td class="text-center"> {{number_format($movie->note, 1)}} </td>
+                        <td class="flex justify-center"><img class="rounded-lg shadow-2xl" src={{ $movie->img_src }} width="90"></td>
+                        <td class="text-center"> {{ !empty($personal_data->note) ? $personal_data->note : number_format($movie->note, 1)}} </td>
                         <td class="text-center"> {{$movie->name}} </td>
                         <td class="text-center"> {{Carbon\Carbon::create($movie->release_date)->format('d/m/Y')}} </td>
                         <td class="text-center" title="Editar informações"> <a href=" {{route('personal-list-edit', ['id' => auth()->user()->id, 'list_id' => $movie->id])}} "><i class="fas fa-edit" style="color: rgb(255, 255, 255)"></i></a></td>
@@ -36,6 +36,6 @@
                 </tbody>
             @endforeach
         </table>
-        {{-- paginação {{ $personal_movies->links() }} --}}
+        {{ $personal_movies->links() }}
     </div>
 @endsection
