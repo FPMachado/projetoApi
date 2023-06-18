@@ -14,9 +14,7 @@ class UserPersonalListController extends Controller
 {
     public function __invoke()
     {
-        // $personal_movies = DB::table('personal_list')->where('user_id', auth()->user()->id)->paginate(4);
         $movies = DB::table('personal_list')->select('id', 'user_id', 'note', 'movie_id')->where('user_id', auth()->user()->id)->get();
-        // dd($movies);
         $personal_movies = [];
         foreach ($movies as $key => $movie) {
             $personal_movies[$key] =  DB::table('movies')->where('id', $movie->movie_id)->first();
