@@ -15,11 +15,13 @@ class UserPersonalListController extends Controller
     public function __invoke()
     {
         // $personal_movies = DB::table('personal_list')->where('user_id', auth()->user()->id)->paginate(4);
-        $movies = DB::table('personal_list')->select('user_id', 'note', 'movie_id')->where('user_id', auth()->user()->id)->get();
+        $movies = DB::table('personal_list')->select('id', 'user_id', 'note', 'movie_id')->where('user_id', auth()->user()->id)->get();
+        // dd($movies);
         $personal_movies = [];
         foreach ($movies as $key => $movie) {
             $personal_movies[$key] =  DB::table('movies')->where('id', $movie->movie_id)->first();
             $personal_movies[$key]->note = $movie->note;
+            $personal_movies[$key]->personal_list_id = $movie->id;
         }
 
         $personal_movies = $this->paginate($personal_movies);
@@ -73,7 +75,6 @@ class UserPersonalListController extends Controller
     public function update(Request $request)
     {
         $data_list = PersonalList::where('movie_id', $request->movie_id)->where('user_id', auth()->user()->id)->first();
-        // dd($request);
         
         $data_list->update([
             'note' => number_format($request->note, 2, ".", "."),
@@ -86,8 +87,9 @@ class UserPersonalListController extends Controller
         return redirect()->back()->with('message', 'Informações do filme da sua lista atualizada!');
     }
 
-    public function destroy(PersonalList $personal_list)
+    public function destroy(Request $request)
     {
-        // dd($personal_list);
+        PersonalList::destroy($request->personal_list_id);
+        return redirect()->back()->with('message', "Você deletou um filme da sua lista");
     }
 }

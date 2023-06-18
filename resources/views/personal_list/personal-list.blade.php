@@ -1,6 +1,17 @@
 @extends('templates.padrao')
 
 @section('content')
+
+    @if ($errors->any())
+        @foreach ($errors->all() as $erro)
+            <div class="text-center w-full bg-red-400 mb-3"> {{ $erro }} </div>
+        @endforeach
+    @endif
+
+    @if (session('message'))
+        <div class="text-center w-full bg-green-400 mb-3"> {{ session('message') }} </div>
+    @endif
+
     <div  class="container mx-auto py-8 w-full">
         <div class="text-right mt-3">
             <form action=" " method="post">
@@ -22,16 +33,21 @@
                 </tr>
             </thead>
             @foreach ($personal_movies as $movie)
-            {{-- @dd($personal_movies['user_id']) --}}
                 <tbody class="text-xl">  
                     <tr class=" hover:bg-yellow-500 rounded border-collapse border border-black">
                         <td class="flex justify-center"><img class="rounded-lg shadow-2xl" src={{ $movie->img_src }} width="90"></td>
                         <td class="text-center"> {{ !empty($personal_data->note) ? $personal_data->note : number_format($movie->note, 1)}} </td>
                         <td class="text-center"> {{$movie->name}} </td>
                         <td class="text-center"> {{Carbon\Carbon::create($movie->release_date)->format('d/m/Y')}} </td>
-                        <td class="text-center" title="Editar informações"> <a href=" {{route('personal-list-edit', ['id' => auth()->user()->id, 'list_id' => $movie->id])}} "><i class="fas fa-edit" style="color: rgb(255, 255, 255)"></i></a></td>
-                        <td class="text-center" title="Excluir da minha lista"> <a href=" "><i class="fas fa-times" style="color: rgb(238, 10, 10)"></i></a></td>
-                        <td class="text-center" title="Marcar como assistido"> <a href=" "><i class="fas fa-check" style="color: rgb(24, 240, 4)"></i></a></td>
+                        <td class="text-center" title="Editar informações"> <a href=" {{route('personal-list-edit', ['id' => auth()->user()->id, 'list_id' => $movie->id])}} "><i class="fas fa-edit"></i></a></td>   
+                        <form action="{{route('personal-list-destroy', ['id' => auth()->user()->id, 'personal_list_id' => $movie->personal_list_id]) }}" method="post">
+                            <input type="hidden" name="personal_list_id" value="{{ $movie->personal_list_id}}">
+                            @csrf @method('DELETE')
+                                <td class="text-center" title="Excluir da minha lista"> 
+                                    <button type="submit"><i class="fas fa-times"></i></button>
+                                    
+                                </td>
+                        </form> 
                     </tr>
                 </tbody>
             @endforeach
