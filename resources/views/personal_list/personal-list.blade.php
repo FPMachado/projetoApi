@@ -32,26 +32,30 @@
                     <th scope="col" class="py-3 px-6" colspan="3">Opções</th>
                 </tr>
             </thead>
-            @foreach ($personal_movies as $movie)
-                <tbody class="text-xl">  
-                    <tr class=" hover:bg-yellow-500 rounded border-collapse border border-black">
-                        <td class="flex justify-center"><img class="rounded-lg shadow-2xl" src={{ $movie->img_src }} width="90"></td>
-                        <td class="text-center"> {{ !empty($personal_data->note) ? $personal_data->note : number_format($movie->note, 1)}} </td>
-                        <td class="text-center"> {{$movie->name}} </td>
-                        <td class="text-center"> {{Carbon\Carbon::create($movie->release_date)->format('d/m/Y')}} </td>
-                        <td class="text-center" title="Editar informações"> <a href=" {{route('personal-list-edit', ['id' => auth()->user()->id, 'list_id' => $movie->id])}} "><i class="fas fa-edit"></i></a></td>   
-                        <form action="{{route('personal-list-destroy', ['id' => auth()->user()->id, 'personal_list_id' => $movie->personal_list_id]) }}" method="post">
-                            <input type="hidden" name="personal_list_id" value="{{ $movie->personal_list_id}}">
-                            @csrf @method('DELETE')
-                                <td class="text-center" title="Excluir da minha lista"> 
-                                    <button type="submit"><i class="fas fa-times"></i></button>
-                                    
-                                </td>
-                        </form> 
-                    </tr>
-                </tbody>
-            @endforeach
+            @if (!empty($personal_movies))
+                @foreach ($personal_movies as $movie)
+                    <tbody class="text-xl">  
+                        <tr class=" hover:bg-yellow-500 rounded border-collapse border border-black">
+                            <td class="flex justify-center"><img class="rounded-lg shadow-2xl" src={{ $movie->img_src }} width="90"></td>
+                            <td class="text-center"> {{ !empty($personal_data->note) ? $personal_data->note : number_format($movie->note, 1)}} </td>
+                            <td class="text-center"> {{$movie->name}} </td>
+                            <td class="text-center"> {{Carbon\Carbon::create($movie->release_date)->format('d/m/Y')}} </td>
+                            <td class="text-center" title="Editar informações"> <a href=" {{route('my-personal-list.movie.show', ['user' => auth()->user()->id, 'movie' => $movie->id])}} "><i class="fas fa-edit"></i></a></td>   
+                            <form action="{{route('personal-list-destroy', ['id' => auth()->user()->id, 'personal_list_id' => $movie->personal_list_id]) }}" method="post">
+                                <input type="hidden" name="personal_list_id" value="{{ $movie->personal_list_id}}">
+                                @csrf @method('DELETE')
+                                    <td class="text-center" title="Excluir da minha lista"> 
+                                        <button type="submit"><i class="fas fa-times"></i></button>
+                                        
+                                    </td>
+                            </form> 
+                        </tr>
+                    </tbody>
+                @endforeach
+            @endif
         </table>
-        {{ $personal_movies->links() }}
+        @if (!empty($personal_movies))
+            {{ $personal_movies->links() }}
+        @endif
     </div>
 @endsection

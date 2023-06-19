@@ -21,7 +21,7 @@ class MovieController extends Controller
         if(!empty(Movies::where('id', $request->movie_id)->first())){
             return false;
         }
-        // dd($request->img_poster);
+
         Movies::create([
             'id'            => $request->movie_id,
             'note'          => $request->note,

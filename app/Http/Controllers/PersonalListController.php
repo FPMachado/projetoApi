@@ -10,9 +10,10 @@ use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\DB;
 
-class UserPersonalListController extends Controller
+
+class PersonalListController extends Controller
 {
-    public function __invoke()
+    public function index()
     {
         $movies = DB::table('personal_list')->select('id', 'user_id', 'note', 'movie_id')->where('user_id', auth()->user()->id)->get();
         $personal_movies = [];
@@ -62,9 +63,9 @@ class UserPersonalListController extends Controller
 
     public function show(Request $request)
     {
-        $personal_data = PersonalList::where('user_id', auth()->user()->id)->where('movie_id', $request->list_id)->toSql();
-        dd($personal_data);
-        $data_movie = DB::table('movies')->where('id',$request->list_id)->first();
+        $personal_data = PersonalList::where('user_id', auth()->user()->id)->where('movie_id', $request->movie)->first();
+        $data_movie = DB::table('movies')->where('id',$request->movie)->first();
+
         if(!empty($personal_data->note)){
             $data_movie->note = $personal_data->note;
         }
@@ -86,9 +87,10 @@ class UserPersonalListController extends Controller
         return redirect()->back()->with('message', 'Informações do filme da sua lista atualizada!');
     }
 
-    public function destroy(Request $request)
+    public function delete(Request $request)
     {
-        PersonalList::destroy($request->personal_list_id);
-        return redirect()->back()->with('message', "Você deletou um filme da sua lista");
+        PersonalList::destroy($request->list_id);
+        $user_id = auth()->user()->id;
+        return redirect("my-personallist/{$user_id}/movies/")->with('message', "Você deletou um filme da sua lista");
     }
 }
