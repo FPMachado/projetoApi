@@ -32,7 +32,8 @@
                     <th scope="col" class="py-3 px-6" colspan="3">Opções</th>
                 </tr>
             </thead>
-            @if (!empty($personal_movies))
+
+            @if (!empty($personal_movies->total))
                 @foreach ($personal_movies as $movie)
                     <tbody class="text-xl">  
                         <tr class=" hover:bg-yellow-500 rounded border-collapse border border-black">
@@ -41,8 +42,8 @@
                             <td class="text-center"> {{$movie->name}} </td>
                             <td class="text-center"> {{Carbon\Carbon::create($movie->release_date)->format('d/m/Y')}} </td>
                             <td class="text-center" title="Editar informações"> <a href=" {{route('my-personal-list.movie.show', ['user' => auth()->user()->id, 'movie' => $movie->id])}} "><i class="fas fa-edit"></i></a></td>   
-                            <form action="{{route('personal-list-destroy', ['id' => auth()->user()->id, 'personal_list_id' => $movie->personal_list_id]) }}" method="post">
-                                <input type="hidden" name="personal_list_id" value="{{ $movie->personal_list_id}}">
+                            <form action="{{route('my-personal-list.movie.delete', ['user' => auth()->user()->id, 'movie' => $movie->personal_list_id]) }}" method="post">
+                                <input type="hidden" name="list_id" value="{{ $movie->personal_list_id}}">
                                 @csrf @method('DELETE')
                                     <td class="text-center" title="Excluir da minha lista"> 
                                         <button type="submit"><i class="fas fa-times"></i></button>
@@ -52,7 +53,14 @@
                         </tr>
                     </tbody>
                 @endforeach
+            @else
+                <tbody class="text-xl">
+                    <tr>
+                        <td class="text-center py-2" colspan="5">Nenhum filme adicionado</td>
+                    </tr>
+                </tbody>
             @endif
+
         </table>
         @if (!empty($personal_movies))
             {{ $personal_movies->links() }}
