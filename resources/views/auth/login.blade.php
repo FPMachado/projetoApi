@@ -1,7 +1,7 @@
 @extends("templates.login")
 
 @section("content")
-    @if ($errors->any())   
+    {{-- @if ($errors->any())   
         @foreach ($errors->all() as $erro)
             <div class="text-center w-full bg-red-400 mb-3"> {{$erro}} </div>
         @endforeach
@@ -9,7 +9,9 @@
 
     @if (session('message'))
         <div class="text-center w-full bg-green-400 mb-3"> {{session('message')}} </div>
-    @endif
+    @endif --}}
+
+    @include('mensagem')
 
     <form action="{{route('login')}}" method="POST"> 
         @csrf

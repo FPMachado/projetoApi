@@ -1,12 +1,12 @@
 @extends("templates.login")
 
 @section('content')
-    @if ($errors->any())   
+    {{-- @if ($errors->any())   
         @foreach ($errors->all() as $erro)
             <div class="text-center w-full bg-red-400"> {{$erro}} </div>
         @endforeach
-    @endif
-
+    @endif --}}
+    @include('mensagem')
     <div class="flex justify-center items-center h-screen">
         <div class="w-96 p-6 shadow-lg bg-gray-500 rounded-md">
             <h1 class="text-3xl block text-center font-semibold text-yellow-400"><i class="far fa-id-card"></i></i> Criar Conta</h1>

@@ -1,7 +1,7 @@
 @extends('templates.padrao')
 
 @section('content')
-    @if ($errors->any())   
+    {{-- @if ($errors->any())   
         @foreach ($errors->all() as $erro)
             <div class="text-center w-full bg-red-400 mb-3"> {{$erro}} </div>
         @endforeach
@@ -9,7 +9,9 @@
 
     @if (session('success'))
         <div class="text-center w-full bg-green-400 mb-3"> {{session('success')}} </div>
-    @endif
+    @endif --}}
+
+    @include('mensagem')
 
     <div  class="container mx-auto py-8 w-full">
         <div class="text-right mt-3">

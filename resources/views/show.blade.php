@@ -1,7 +1,7 @@
 @extends('templates.padrao')
 
 @section('content')
-
+{{-- 
     @if ($errors->any())
         @foreach ($errors->all() as $erro)
             <div class="text-center w-full bg-red-400 mb-3"> {{ $erro }} </div>
@@ -14,7 +14,9 @@
 
     @if (session('warning'))
         <div class="text-center w-full bg-yellow-400 mb-3"> {{session('warning')}} </div>
-    @endif
+    @endif --}}
+
+    @include('mensagem')
 
     <form action="{{route('my-personal-list.movie.store', $movie['id'])}}" method="post">
         @csrf 
