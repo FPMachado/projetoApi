@@ -35,9 +35,13 @@ class PersonalListController extends Controller
 
     public function paginate($items, $perPage = 4, $page = null, $options = [])
     {
+        $user_id = auth()->user()->id;
+        $options = [
+            'path' => "/my-personallist/{$user_id}/movies",
+        ];
         $page = $page ?: (Paginator::resolveCurrentPage() ?: 1);
         $items = $items instanceof Collection ? $items : Collection::make($items);
-        return new LengthAwarePaginator($items->forPage($page, $perPage), $items->count(), $perPage, $page, ['path' => 'personal_list.personal-list']);
+        return new LengthAwarePaginator($items->forPage($page, $perPage), $items->count(), $perPage, $page, $options);
     }
 
     /**
