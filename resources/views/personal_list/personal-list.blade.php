@@ -16,7 +16,7 @@
 
     <div  class="container mx-auto py-8 w-full">
         <div class="text-right mt-3">
-            <form action=" " method="post">
+            <form action=" {{ route("my-personal-list.movie.search", ['user' => auth()->user()->id])}} " method="post">
                 @csrf
                 <input class="border border-black text-xl px-6 py-2 rounded-md w-80" type="text" name="pesquisa" placeholder="Digite o nome do filme" value="{{old('pesquisa')}}">
                 <button type="submit" class="bg-yellow-500 text-xl text-black font-sans duration-500 px-6 py-2 hover:bg-yellow-300 rounded">Pesquisar</button>

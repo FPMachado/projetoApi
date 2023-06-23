@@ -15,7 +15,7 @@ class PersonalListController extends Controller
 {
     public function index()
     {
-        $movies = DB::table('personal_list')->select('id', 'user_id', 'note', 'movie_id')->where('user_id', auth()->user()->id)->get();
+        $movies = DB::table('personal_list')->select('id', 'user_id', 'note', 'movie_id')->where('user_id', auth()->user()->id)->orderBy("created_at", "desc")->get();
         
         if(empty($movies)){
             return view('personal_list.personal-list', compact('personal_movies'));
@@ -37,11 +37,23 @@ class PersonalListController extends Controller
     {
         $user_id = auth()->user()->id;
         $options = [
-            'path' => "/my-personallist/{$user_id}/movies",
+            'path' => "/my-personal-list/{$user_id}/movies",
         ];
         $page = $page ?: (Paginator::resolveCurrentPage() ?: 1);
         $items = $items instanceof Collection ? $items : Collection::make($items);
         return new LengthAwarePaginator($items->forPage($page, $perPage), $items->count(), $perPage, $page, $options);
+    }
+
+    public function search(Request $request)
+    {
+        $user = auth()->user()->id;
+        $personal_movies = DB::select("select movies.*, personal_list.id as personal_list_id, personal_list.note from movies inner join personal_list on personal_list.movie_id = movies.id where movies.name like '%{$request->pesquisa}%' and personal_list.user_id = {$user}");
+        if(empty($personal_movies)){
+            return view('personal_list.personal-list', compact('personal_movies'));
+        }
+        $personal_movies = $this->paginate($personal_movies);
+        
+        return view('personal_list.personal-list', compact('personal_movies'));
     }
 
     /**
@@ -51,7 +63,7 @@ class PersonalListController extends Controller
     {
         $movie_exists = PersonalList::where('movie_id', $request->movie_id)->where('user_id', auth()->user()->id)->first();
         $movie        = Movies::where('id', $request->movie_id)->first();
-
+        
         if(empty($movie)){
             MovieController::store($request);
         }

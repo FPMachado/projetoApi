@@ -26,7 +26,7 @@ class MovieSearchRequest extends FormRequest
     public function rules()
     {
         return [
-            'search' => ['required', 'min:4', 'max:160'],
+            'search' => ['required', 'min:3', 'max:160'],
         ];
     }
 
