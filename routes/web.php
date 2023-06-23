@@ -41,6 +41,7 @@ Route::get('/dashboard', function(){
 require __DIR__.'/auth.php';
 require __DIR__.'/movie.php';
 require __DIR__.'/personal-list.php';
+require __DIR__.'/user.php';
 
 Route::get('/', function () {
     return view('welcome');
