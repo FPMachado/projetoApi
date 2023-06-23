@@ -112,6 +112,6 @@ class PersonalListController extends Controller
     {
         PersonalList::destroy($request->list_id);
         $user_id = auth()->user()->id;
-        return redirect("my-personallist/{$user_id}/movies/")->with('message', "Você deletou um filme da sua lista");
+        return redirect("my-personal-list/{$user_id}/movies/")->with('message', "Você deletou um filme da sua lista");
     }
 }
