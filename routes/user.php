@@ -7,4 +7,5 @@ Route::controller(UserController::class)
     ->middleware(['auth'])
     ->group(function(){
     Route::get('/profile/{user}', "index")->name("profile.index");
+    Route::post('/profile/{user}', "update")->name("profile.update");
 });
