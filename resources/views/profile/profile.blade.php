@@ -38,7 +38,9 @@
     
             <div class="text-center w-full">
                 <button class="bg-green-500 hover:bg-green-400 rounded-lg py-1 px-1 w-full" type="submit"><i class="fas fa-save"></i> Salvar</button>
-                <button class="bg-yellow-500 hover:bg-yellow-400 rounded-lg py-1 px-1 my-1 w-full" type="button"><i class="far fa-envelope"></i> Verificar email</button>
+                <a href="{{route('verification.send')}}">
+                    <button class="bg-yellow-500 hover:bg-yellow-400 rounded-lg py-1 px-1 my-1 w-full" type="button"><i class="far fa-envelope"></i> Verificar email</button>
+                </a>
             </div>
         </form>
 
