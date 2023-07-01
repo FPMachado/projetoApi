@@ -2,16 +2,6 @@
 
 @section('content')
 
-    {{-- @if ($errors->any())
-        @foreach ($errors->all() as $erro)
-            <div class="text-center w-full bg-red-400 mb-3"> {{ $erro }} </div>
-        @endforeach
-    @endif
-
-    @if (session('message'))
-        <div class="text-center w-full bg-green-400 mb-3"> {{ session('message') }} </div>
-    @endif --}}
-
     @include('mensagem')
 
     <div  class="container mx-auto py-8 w-full">
@@ -31,7 +21,7 @@
                     <th scope="col" class="py-3 px-6">Nota</th>
                     <th scope="col" class="py-3 px-6">Nome</th>
                     <th scope="col" class="py-3 px-6">Data de Lançamento</th>
-                    <th scope="col" class="py-3 px-6" colspan="3">Opções</th>
+                    <th scope="col" class="py-3 px-6" colspan="2">Opções</th>
                 </tr>
             </thead>
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Movies;
 use App\Models\PersonalList;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
@@ -102,8 +103,12 @@ class PersonalListController extends Controller
             'assisted_in' =>  $request->assisted_in,
             'observation' => $request->observation,
         ]);
+
+        $user = User::where('id', auth()->user()->id)->first();
         
-        SendEmailsController::sendEmailAddMovie($data_list->user_id, $request->movie_id);
+        if($user->recive_email == 't'){
+            SendEmailsController::sendEmailAddMovie($data_list->user_id, $request->movie_id);
+        }
 
         return redirect()->back()->with('message', 'Informações do filme da sua lista atualizada!');
     }

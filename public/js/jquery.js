@@ -53,6 +53,7 @@ function getDate(){
         dia  = data.getDate(),
         mes  = data.getMonth() + 1,
         ano  = data.getFullYear();
+    dia = ((dia < 10) ? "0"+dia : '');
     mes = ((mes <10) ? "0"+mes : '');
     return [ano, mes, dia].join('-');
 }
