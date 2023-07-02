@@ -9,4 +9,5 @@ Route::controller(AdminController::class)
     ->group(function(){
     Route::get('', 'index')->name('admin.index');
     Route::get('/users', 'users')->name('admin.users');
+    // Route::post('/users','search')->name('admin.users.search');
 });
