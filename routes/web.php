@@ -42,6 +42,7 @@ require __DIR__.'/auth.php';
 require __DIR__.'/movie.php';
 require __DIR__.'/personal-list.php';
 require __DIR__.'/user.php';
+require __DIR__.'/admin.php';
 
 Route::get('/', function () {
     return view('welcome');

@@ -4,13 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Jobs\JobAddMovie;
 use App\Jobs\JobemailResetPassword;
-use App\Mail\LinkResetPassword;
 use App\Models\Movies;
 use App\Models\PersonalList;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Mail;
 
 class SendEmailsController extends Controller
 {
