@@ -10,4 +10,5 @@ Route::controller(AdminController::class)
     Route::get('', 'index')->name('admin.index');
     Route::get('/users', 'users')->name('admin.users');
     // Route::post('/users','search')->name('admin.users.search');
+    Route::get('/movies', 'movies')->name('admin.movies');
 });
