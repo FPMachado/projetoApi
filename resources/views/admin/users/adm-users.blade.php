@@ -23,12 +23,11 @@
                     <td> {{ $user['name']}} </td>
                     <td class="text-center"> {{ $user['last_name'] }} </td>
                     <td> {{ $user['email'] }} </td>
-                    <form action="{{route('my-personal-list.movie.delete', ['user' => auth()->user()->id, 'movie' => $user['id']]) }}" method="post">
-                        <input type="hidden" name="list_id" value="{{  $user['id']}}">
+                    <form action="{{route('admin.users.delete', ['id' => $user['id']]) }}" method="post">
+                        <input type="hidden" name="user_id" value="{{$user['id']}}">
                         @csrf @method('DELETE')
                             <td class="text-center" title="Excluir da minha lista"> 
-                                <button type="submit"><i class="fas fa-times"></i></button>
-                                
+                                <button type="submit"><i class="fas fa-times"></i></button> 
                             </td>
                     </form>
                 </tr>

@@ -1,6 +1,9 @@
 @extends('templates.padrao')
 
 @section('content')
+
+    @include('mensagem')
+
     <div class="container mx-auto py-2 w-full bg-gray-700 rounded-lg mt-3">
         <h1 class="text-center text-yellow-500 text-2xl">Administração</h1>
 

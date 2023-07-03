@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Movies;
+use App\Models\PersonalList;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
@@ -45,5 +46,15 @@ class AdminController extends Controller
         $movies = $this->paginate($movies, $options);
 
         return view('admin.index', compact('movies'));
+    }
+
+    public function deleteUser(Request $request)
+    {
+        $personal_list_ids = PersonalList::select('id')->where('user_id', $request->user_id)->get();
+ 
+        PersonalList::destroy($personal_list_ids);
+        User::destroy($request->user_id);
+
+        return redirect()->back()->with("message", "Usuário deletado com sucesso.");
     }
 }
