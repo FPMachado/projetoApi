@@ -12,6 +12,7 @@
                 <th scope="col" class="py-3 px-3">Id</th>
                 <th scope="col" class="py-3 px-3">Nome</th>
                 <th scope="col" class="py-3 px-3">Data de Lançamento</th>
+                <th scope="col" class="py-3 px-3">Opções</th>
             </tr>
         </thead>
         @foreach ($movies as $movie)
@@ -20,8 +21,13 @@
                     <td class="text-center"> {{ $movie['id']}} </td>
                     <td> {{ $movie['name']}} </td>
                     <td> {{ date('d/m/Y', strtotime($movie['release_date'])) }} </td>
-                    {{-- <td class="text-center"> {{ (array_key_exists('release_date', $movie)) ? date('d/m/Y', strtotime($movie['release_date'])) : "" }} </td> --}}
-                    {{-- <td class="text-center" title='Mais Informações sobre o filme'> <a href=" {{ route("movie.show", ['movie' => $movie['id']]) }}"><i class="fas fa-info-circle"></i></a></td> --}}
+                    <form action="{{route('admin.movies.update', ['id' => $movie['id']]) }}" method="post">
+                        <input type="hidden" name="movie_id" value="{{$movie['id']}}">
+                        @csrf @method('PUT')
+                            <td class="text-center" title="Atualizar Filme"> 
+                                <button type="submit"><i class="fas fa-sync-alt"></i></button> 
+                            </td>
+                    </form>
                 </tr>
             </tbody>
         @endforeach

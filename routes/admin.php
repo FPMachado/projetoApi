@@ -9,7 +9,8 @@ Route::controller(AdminController::class)
     ->group(function(){
     Route::get('', 'index')->name('admin.index');
     Route::get('/users', 'users')->name('admin.users');
-    // Route::post('/users','search')->name('admin.users.search');
+    Route::post('/users','searchUser')->name('admin.users.search');
     Route::get('/movies', 'movies')->name('admin.movies');
-    Route::delete('users/delete/{id}', 'deleteUser')->name('admin.users.delete');
+    Route::put('/movies/update/{id}', 'update')->name('admin.movies.update');
+    Route::delete('users/delete/{id}', 'destroyUser')->name('admin.users.delete');
 });

@@ -5,7 +5,7 @@
     @include('mensagem')
 
     <div class="container mx-auto py-2 w-full bg-gray-700 rounded-lg mt-3">
-        <h1 class="text-center text-yellow-500 text-2xl">Administração</h1>
+        <h1 class="text-center text-yellow-500 text-2xl">Administração <i class="fas fa-cogs"></i></h1>
 
         <div class="display flex w-full">
             <div class="ml-3 drop-shadow-xl bg-gray-500 rounded-md" style="width: 25%; height: 135px; margin-top: 36px;">

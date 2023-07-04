@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\Http;
 
 class AdminController extends Controller
 {
@@ -36,6 +37,15 @@ class AdminController extends Controller
         return view('admin.index', compact('users'));
     }
 
+    public function searchUser(Request $request)
+    {
+        $users = User::where('name', 'like', '%'. $request->search .'%')->whereNull("email_verified_at")->get();
+
+        $users = $this->paginate($users);
+
+        return view('admin.index', compact('users'));
+    }
+
     public function movies()
     {
         $movies = Movies::all(['id', 'name', 'release_date']);
@@ -48,7 +58,7 @@ class AdminController extends Controller
         return view('admin.index', compact('movies'));
     }
 
-    public function deleteUser(Request $request)
+    public function destroyUser(Request $request)
     {
         $personal_list_ids = PersonalList::select('id')->where('user_id', $request->user_id)->get();
  
@@ -56,5 +66,23 @@ class AdminController extends Controller
         User::destroy($request->user_id);
 
         return redirect()->back()->with("message", "Usuário deletado com sucesso.");
+    }
+
+    public function update(Request $request)
+    {
+        $api_key = config('tmdb.api_key');
+        $movie = Http::get(config('tmdb.base_url')."/3/movie/{$request->movie_id}"."?api_key={$api_key}&language=pt-BR&append_to_response=videos")->json();
+
+        $data_movie = Movies::where('id', $request->movie_id)->first();
+
+        $data_movie->update([
+            'note'          => $movie['vote_average'],
+            'name'          => $movie['original_title'],
+            'release_date'  => $movie['release_date'],
+            'img_src'       => config('tmdb.image_base_url')."{$movie['poster_path']}",
+            'synopsis'      => $movie['overview'],
+        ]);
+
+        return redirect()->back()->with("message", "Filme atualizado com sucesso!");
     }
 }
