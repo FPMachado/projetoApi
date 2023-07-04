@@ -15,7 +15,7 @@
                     <a href="{{route('admin.users')}}"><li class="text-yellow-500">Gerenciamento de Usuários</li></a>
                     <a href="{{route('admin.movies')}}"><li class="text-yellow-500">Gerenciamento de Filmes</li></a>
                     <a href=""><li class="text-yellow-500">Relatório de Usuários</li></a>
-                    <a href=""><li class="text-yellow-500">Relatório de Filmes</li></a>
+                    <a href="{{route('admin.movies.report')}}"><li class="text-yellow-500">Relatório de Filmes</li></a>
                 </ul>
             </div>
 

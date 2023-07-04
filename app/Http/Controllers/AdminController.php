@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Http;
+use PDF;
 
 class AdminController extends Controller
 {
@@ -93,5 +94,14 @@ class AdminController extends Controller
         ]);
 
         return redirect()->back()->with("message", "Filme atualizado com sucesso!");
+    }
+
+    public function reportMovies()
+    {
+        $movies = Movies::all();
+        
+        $pdf = PDF::loadView('pdf', compact('movies'));
+
+        return $pdf->setPaper('a4')->stream('teste');
     }
 }
