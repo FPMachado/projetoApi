@@ -28,7 +28,7 @@
                             <input type="hidden" name="user_id" value="{{$user['id']}}">
                             @csrf @method('DELETE')
                                 <td class="text-center" title="Excluir Usuário"> 
-                                    <button type="submit"><i class="fas fa-times"></i></button> 
+                                    <button type="submit" title="Excluir usuário"><i class="fas fa-times"></i></button> 
                                 </td>
                         </form>
                     </tr>

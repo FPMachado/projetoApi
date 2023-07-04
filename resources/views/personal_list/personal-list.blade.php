@@ -21,6 +21,7 @@
                     <th scope="col" class="py-3 px-6">Nota</th>
                     <th scope="col" class="py-3 px-6">Nome</th>
                     <th scope="col" class="py-3 px-6">Data de Lançamento</th>
+                    <th scope="col" class="py-3 px-6">Assistido Em</th>
                     <th scope="col" class="py-3 px-6" colspan="2">Opções</th>
                 </tr>
             </thead>
@@ -33,6 +34,7 @@
                             <td class="text-center"> {{ !empty($personal_data->note) ? $personal_data->note : number_format($movie->note, 1)}} </td>
                             <td class="text-center"> {{$movie->name}} </td>
                             <td class="text-center"> {{Carbon\Carbon::create($movie->release_date)->format('d/m/Y')}} </td>
+                            <td class="text-center"> {{is_null($movie->assisted_in) ? "Ainda não assitido" : Carbon\Carbon::create($movie->assisted_in)->format('d/m/Y') }} </td>
                             <td class="text-center" title="Editar informações"> <a href=" {{route('my-personal-list.movie.show', ['user' => auth()->user()->id, 'movie' => $movie->id])}} "><i class="fas fa-edit"></i></a></td>   
                             <form action="{{route('my-personal-list.movie.delete', ['user' => auth()->user()->id, 'movie' => $movie->personal_list_id]) }}" method="post">
                                 <input type="hidden" name="list_id" value="{{ $movie->personal_list_id}}">

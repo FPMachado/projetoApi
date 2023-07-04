@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Verified;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
@@ -24,6 +25,8 @@ class VerifyEmailController extends Controller
         if ($request->user()->markEmailAsVerified()) {
             event(new Verified($request->user()));
         }
+
+       $request->user()->markAdmin();
 
         return redirect("/profile/".auth()->user()->id.'?verified=1')->with("message", "Email verificado com sucesso. Agora você tem acesso a novas funcionalidades!");
     }

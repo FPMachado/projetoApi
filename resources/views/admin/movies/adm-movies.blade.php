@@ -15,22 +15,32 @@
                 <th scope="col" class="py-3 px-3">Opções</th>
             </tr>
         </thead>
-        @foreach ($movies as $movie)
-            <tbody class="text-xl border-collapse border border-black">  
-                <tr class=" hover:bg-yellow-500 rounded border-collapse border border-black divide-x divide-black">
-                    <td class="text-center"> {{ $movie['id']}} </td>
-                    <td> {{ $movie['name']}} </td>
-                    <td> {{ date('d/m/Y', strtotime($movie['release_date'])) }} </td>
-                    <form action="{{route('admin.movies.update', ['id' => $movie['id']]) }}" method="post">
-                        <input type="hidden" name="movie_id" value="{{$movie['id']}}">
-                        @csrf @method('PUT')
-                            <td class="text-center" title="Atualizar Filme"> 
-                                <button type="submit"><i class="fas fa-sync-alt"></i></button> 
-                            </td>
-                    </form>
+        @if (!empty($movies->total))
+            @foreach ($movies as $movie)
+                <tbody class="text-xl border-collapse border border-black">  
+                    <tr class=" hover:bg-yellow-500 rounded border-collapse border border-black divide-x divide-black">
+                        <td class="text-center"> {{ $movie['id']}} </td>
+                        <td> {{ $movie['name']}} </td>
+                        <td> {{ date('d/m/Y', strtotime($movie['release_date'])) }} </td>
+                        <form action="{{route('admin.movies.update', ['id' => $movie['id']]) }}" method="post">
+                            <input type="hidden" name="movie_id" value="{{$movie['id']}}">
+                            @csrf @method('PUT')
+                                <td class="text-center" title="Atualizar Filme"> 
+                                    <button type="submit" title="Atualizar informações do filme"><i class="fas fa-sync-alt"></i></button> 
+                                </td>
+                        </form>
+                    </tr>
+                </tbody>
+            @endforeach
+        @else
+            <tbody class="text-xl">
+                <tr>
+                    <td class="text-center py-2" colspan="5">Nenhum Filme Encontrado</td>
                 </tr>
             </tbody>
-        @endforeach
+        @endif
     </table>
-    {{$movies->links()}}
+    @if (!empty($users))
+        {{$movies->links()}}
+    @endif
 </div>

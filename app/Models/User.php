@@ -23,7 +23,8 @@ class User extends Authenticatable
         'last_name',
         'email',
         'password',
-        'recive_email'
+        'recive_email',
+        'admin',
     ];
 
     /**
@@ -53,5 +54,10 @@ class User extends Authenticatable
     public function sendEmailVerificationNotification()
     {
         $this->notify(new VerifyEmailQueued($this));
+    }
+
+    public function markAdmin()
+    {
+        $this->update(['admin' => 't']);
     }
 }

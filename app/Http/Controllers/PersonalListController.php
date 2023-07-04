@@ -16,7 +16,7 @@ class PersonalListController extends Controller
 {
     public function index()
     {
-        $movies = DB::table('personal_list')->select('id', 'user_id', 'note', 'movie_id')->where('user_id', auth()->user()->id)->orderBy("created_at", "desc")->get();
+        $movies = DB::table('personal_list')->select('id', 'user_id', 'note', 'movie_id', 'assisted_in')->where('user_id', auth()->user()->id)->orderBy("created_at", "desc")->get();
         
         if(empty($movies)){
             return view('personal_list.personal-list', compact('personal_movies'));
@@ -25,6 +25,7 @@ class PersonalListController extends Controller
         $personal_movies = [];
         foreach ($movies as $key => $movie) {
             $personal_movies[$key] =  DB::table('movies')->where('id', $movie->movie_id)->first();
+            $personal_movies[$key]->assisted_in =  $movie->assisted_in;
             $personal_movies[$key]->note = $movie->note;
             $personal_movies[$key]->personal_list_id = $movie->id;
         }

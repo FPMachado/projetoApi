@@ -45,6 +45,15 @@ class AdminController extends Controller
 
         return view('admin.index', compact('users'));
     }
+    
+    public function searchMovie(Request $request)
+    {
+        $movies =Movies::where('name', 'like', '%'. $request->search .'%')->get();
+
+        $movies = $this->paginate($movies);
+
+        return view('admin.index', compact('movies'));
+    }
 
     public function movies()
     {
@@ -77,7 +86,7 @@ class AdminController extends Controller
 
         $data_movie->update([
             'note'          => $movie['vote_average'],
-            'name'          => $movie['original_title'],
+            'name'          => $movie['title'],
             'release_date'  => $movie['release_date'],
             'img_src'       => config('tmdb.image_base_url')."{$movie['poster_path']}",
             'synopsis'      => $movie['overview'],
