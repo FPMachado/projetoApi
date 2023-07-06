@@ -14,5 +14,6 @@ Route::controller(AdminController::class)
     Route::post('/movies', 'searchMovie')->name('admin.movies.search');
     Route::put('/movies/update/{id}', 'update')->name('admin.movies.update');
     Route::delete('users/delete/{id}', 'destroyUser')->name('admin.users.delete');
-    Route::get('/movies/report', 'reportMovies')->name('admin.movies.report');
+    Route::get('/movies/report', 'reportMoviesIndex')->name('admin.movies.report.index');
+    // Route::get('/movies/report', 'reportMovies')->name('admin.movies.report');
 });

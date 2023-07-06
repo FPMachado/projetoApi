@@ -1,6 +1,10 @@
 $(document).ready(function(){
     $("#dropDown").hide();
     changeTypeInputPassword()
+    $("#labelDe").hide();
+    $("#dateSta").hide();
+    $("#labelAte").hide();
+    $("#dateEnd").hide();
 });
 
 function userButton(){
@@ -56,4 +60,18 @@ function getDate(){
     dia = ((dia < 10) ? "0"+dia : '');
     mes = ((mes <10) ? "0"+mes : '');
     return [ano, mes, dia].join('-');
+}
+
+function tipoRela(value) {
+    if(value == "movie02"){
+        $("#labelDe").show();
+        $("#dateSta").show();
+        $("#labelAte").show();
+        $("#dateEnd").show();
+    }else{
+        $("#labelDe").hide();
+        $("#dateSta").hide();
+        $("#labelAte").hide();
+        $("#dateEnd").hide();
+    }
 }

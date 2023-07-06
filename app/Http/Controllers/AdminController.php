@@ -96,12 +96,18 @@ class AdminController extends Controller
         return redirect()->back()->with("message", "Filme atualizado com sucesso!");
     }
 
+    public function reportMoviesIndex()
+    {
+        $relMovies = true;
+        return view('admin.index', compact('relMovies'));
+    }
+
     public function reportMovies()
     {
         $movies = Movies::all();
         
-        $pdf = PDF::loadView('pdf', compact('movies'));
+        $pdf = PDF::loadView('report.movie01', compact('movies'));
 
-        return $pdf->setPaper('a4')->stream('teste');
+        return $pdf->setPaper('a4', 'landscape')->stream("MOVIES01".date("dmYHis").".pdf");
     }
 }
