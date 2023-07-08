@@ -122,7 +122,7 @@ class AdminController extends Controller
 
         $pdf = PDF::loadView('report.movie', compact('movies'));
 
-        return $pdf->setPaper('a4', 'landscape')->stream(strtoupper($request->tipoRel).date("dmYHis").".pdf");
+        return $pdf->setPaper('a4', 'landscape')->download(strtoupper($request->tipoRel).date("dmYHis").".pdf");
     }
     
     public function reportUser(Request $request)
@@ -136,6 +136,6 @@ class AdminController extends Controller
 
         $pdf = PDF::loadView('report.user', compact('users'));
 
-        return $pdf->setPaper('a4', 'landscape')->stream("USER01".date("dmYHis").".pdf");
+        return $pdf->setPaper('a4', 'landscape')->download("USER01".date("dmYHis").".pdf");
     }
 }
