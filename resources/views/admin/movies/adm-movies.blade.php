@@ -40,7 +40,7 @@
             </tbody>
         @endif
     </table>
-    @if (!empty($users))
+    @if (!empty($movies))
         {{$movies->links()}}
     @endif
 </div>

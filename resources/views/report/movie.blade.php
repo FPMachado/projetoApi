@@ -37,7 +37,4 @@
     </table>
 
 </body>
-<footer>
-    Teste
-</footer>
 </html>

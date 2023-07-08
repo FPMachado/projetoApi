@@ -101,13 +101,41 @@ class AdminController extends Controller
         $relMovies = true;
         return view('admin.index', compact('relMovies'));
     }
-
-    public function reportMovies()
+   
+    public function reportUserIndex()
     {
-        $movies = Movies::all();
-        
-        $pdf = PDF::loadView('report.movie01', compact('movies'));
+        $relUsers = true;
+        return view('admin.index', compact('relUsers'));
+    }
 
-        return $pdf->setPaper('a4', 'landscape')->stream("MOVIES01".date("dmYHis").".pdf");
+    public function reportMovies(Request $request)
+    {
+        if($request->tipoRel == 'movie01'){
+           $movies = Movies::all();
+        }elseif(!empty($request->dateSta) and !empty($request->dateEnd)){
+            $movies = Movies::whereBetween('updated_at', ["{$request->dateSta} 00:00:00", "{$request->dateEnd} 23:59:59"])->get();
+        }
+
+        if(empty($movies)){
+            return redirect()->back()->with("warning", "Não há dados para este filtro");
+        }
+
+        $pdf = PDF::loadView('report.movie', compact('movies'));
+
+        return $pdf->setPaper('a4', 'landscape')->stream(strtoupper($request->tipoRel).date("dmYHis").".pdf");
+    }
+    
+    public function reportUser(Request $request)
+    {
+        
+        $users = User::all()->where('id', "!=", auth()->user()->id);
+
+        if(empty($users)){
+            return redirect()->back()->with("warning", "Não há dados para este filtro");
+        }
+
+        $pdf = PDF::loadView('report.user', compact('users'));
+
+        return $pdf->setPaper('a4', 'landscape')->stream("USER01".date("dmYHis").".pdf");
     }
 }

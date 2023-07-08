@@ -14,7 +14,7 @@
                 <ul class="mt-2 ml-2">
                     <a href="{{route('admin.users')}}"><li class="text-yellow-500">Gerenciamento de Usuários</li></a>
                     <a href="{{route('admin.movies')}}"><li class="text-yellow-500">Gerenciamento de Filmes</li></a>
-                    <a href=""><li class="text-yellow-500">Relatório de Usuários</li></a>
+                    <a href="{{route('admin.user.report.index')}}"><li class="text-yellow-500">Relatório de Usuários</li></a>
                     <a href="{{route('admin.movies.report.index')}}"><li class="text-yellow-500">Relatório de Filmes</li></a>
                 </ul>
             </div>
@@ -29,6 +29,10 @@
 
             @if (!empty($relMovies))
                 @include('admin.movies.report-movies')
+            @endif
+
+            @if (!empty($relUsers))
+                @include('admin.users.report-users')
             @endif
 
         </div>
