@@ -1,17 +1,8 @@
 <?php
 
 use App\Http\Controllers\ApiController;
-use App\Http\Controllers\FilmesController;
-use App\Http\Controllers\LoginController;
-use App\Http\Controllers\PersonalListController;
-use App\Http\Controllers\UserPersonalListController;
 use App\Http\Controllers\SendEmailsController;
 use App\Http\Controllers\SobreMimController;
-use App\Http\Controllers\SocialiteController;
-use App\Mail\SendEmails;
-use App\Models\PersonalList;
-use App\Models\User;
-use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
 

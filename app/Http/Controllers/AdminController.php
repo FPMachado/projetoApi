@@ -116,7 +116,7 @@ class AdminController extends Controller
             $movies = Movies::whereBetween('updated_at', ["{$request->dateSta} 00:00:00", "{$request->dateEnd} 23:59:59"])->get();
         }
 
-        if(empty($movies)){
+        if(empty($movies['items'])){
             return redirect()->back()->with("warning", "Não há dados para este filtro");
         }
 
@@ -136,6 +136,6 @@ class AdminController extends Controller
 
         $pdf = PDF::loadView('report.user', compact('users'));
 
-        return $pdf->setPaper('a4', 'landscape')->download("USER01".date("dmYHis").".pdf");
+        return $pdf->setPaper('a4', 'landscape')->download(strtoupper($request->tipoRel).date("dmYHis").".pdf");
     }
 }

@@ -11,7 +11,7 @@ class PersonalList extends Model
     use HasFactory;
 
     protected $table = "personal_list";
-    protected $fillable = ['personal_list_id', 'user_id', 'note', 'observation', 'movie_id','assisted_in'];
+    protected $fillable = ['id', 'user_id', 'movie_id' ,'note', 'observation','assisted_in'];
 
     public function users()
     {

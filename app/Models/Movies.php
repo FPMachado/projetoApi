@@ -10,7 +10,5 @@ class Movies extends Model
     use HasFactory;
 
     protected $table = "movies";
-    protected $fillable = ['id', 'note', 'name', 'img_src', 'synopsis' ,'release_date'];
-
-    
+    protected $fillable = ['id', 'note', 'name', 'img_src', 'synopsis' ,'release_date'];   
 }

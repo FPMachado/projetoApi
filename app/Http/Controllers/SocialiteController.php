@@ -22,7 +22,7 @@ class SocialiteController extends Controller
         $this->socialData = Socialite::driver(session()->get('_social_driver'))->user();
 
         if(User::where('email', $this->socialData['email'])->first()){
-            return view('auth.login', ['email' => $this->socialData['email']])->withErrors("Este email já está cadastrado em nosso banco de dados. Tente usar outro email ou recupere sua senha");
+            return view('auth.login', ['email' => $this->socialData['email']])->with("warning", "Este email já está cadastrado em nosso banco de dados. Tente usar outro email ou recupere sua senha");
         }
 
         return view('auth.register', ['user' => $this->getUser()]);
