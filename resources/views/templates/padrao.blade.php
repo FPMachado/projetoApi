@@ -22,19 +22,19 @@
             </a>
         </div>
         <ul class="mt-0 md:flex md:items-center z-[-1] md:z-auto md:static absolute bg-black text-yellow-500 w-full left-0 md:w-auto md:py-0 py-4 md:pl-0 pl-7 md:opacity-100 opacity-0 top-[-400] transition-all ease-in duration-500">
-            @if (auth()->user()->admin == 't')
-                <li class="mx-4 my-6 md:my-0">
-                    <a href="{{route('admin.index')}}" class="text-xl hover:text-yellow-300 duration-500">Administração</a>
-                </li> 
-            @endif
-            <li class="mx-4 my-6 md:my-0">
-                <a href="" class="text-xl hover:text-yellow-300 duration-500">Documentação</a>
-            </li> 
-            <li class="mx-4 my-6 md:my-0">
-                <a href=" {{route('sobreMim')}} " class="text-xl hover:text-yellow-300 duration-500">Sobre Mim</a>
-            </li> 
-            
             @if (Auth::check())
+                @if (auth()->user()->admin == 't')
+                    <li class="mx-4 my-6 md:my-0">
+                        <a href="{{route('admin.index')}}" class="text-xl hover:text-yellow-300 duration-500">Administração</a>
+                    </li> 
+                @endif
+                <li class="mx-4 my-6 md:my-0">
+                    <a href="" class="text-xl hover:text-yellow-300 duration-500">Documentação</a>
+                </li> 
+                <li class="mx-4 my-6 md:my-0">
+                    <a href=" {{route('sobreMim')}} " class="text-xl hover:text-yellow-300 duration-500">Sobre Mim</a>
+                </li> 
+                
                 <div class="relative">
                     <button class="bg-yellow-500 hover:bg-yellow-300 duration-500 border flex item-center border-gray-300 rounded px-3 py-2 font-semibold text-sm text-black shadow" onclick='userButton()'>Olá {{auth()->user()->name}} <i class="text-sm fas fa-chevron-down  w-3 h-3 ml-2"></i></button> 
                     <div id="dropDown" class="inline-block absolute bg-white border-gray-500 py-1 shadow-md rounded-md" style="width:137px; display: none; margin-left: -32px !important;">
