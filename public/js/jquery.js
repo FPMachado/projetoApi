@@ -53,12 +53,12 @@ function assited(){
 }
 
 function getDate(){
-    var data = new Date(),
-        dia  = data.getDate(),
-        mes  = data.getMonth() + 1,
-        ano  = data.getFullYear();
-    dia = ((dia < 10) ? "0"+dia : '');
-    mes = ((mes <10) ? "0"+mes : '');
+    let data = new Date();
+    dia  = data.getDate();
+    mes  = data.getMonth() + 1;
+    ano  = data.getFullYear();
+    dia = (dia < 10) ? "0"+dia : dia;
+    mes = (mes <10) ? "0"+mes : dia;
     return [ano, mes, dia].join('-');
 }
 

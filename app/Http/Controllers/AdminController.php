@@ -111,15 +111,15 @@ class AdminController extends Controller
     public function reportMovies(Request $request)
     {
         if($request->tipoRel == 'movie01'){
-           $movies = Movies::all();
+            $movies = Movies::all();
         }elseif(!empty($request->dateSta) and !empty($request->dateEnd)){
-            $movies = Movies::whereBetween('updated_at', ["{$request->dateSta} 00:00:00", "{$request->dateEnd} 23:59:59"])->get();
+            $movies = Movies::whereBetween('updated_at', ["{$request->dateSta} 00:00:00", "{$request->dateEnd} 23:59:59"])->get();            
         }
 
-        if(empty($movies['items'])){
+        if($request->tipoRel !=='movie01' and $movies->count() == 0){
             return redirect()->back()->with("warning", "Não há dados para este filtro");
         }
-
+      
         $pdf = PDF::loadView('report.movie', compact('movies'));
 
         return $pdf->setPaper('a4', 'landscape')->download(strtoupper($request->tipoRel).date("dmYHis").".pdf");
