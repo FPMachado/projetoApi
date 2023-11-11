@@ -26,7 +26,7 @@
                 </tr>
             </thead>
 
-            @if (!empty($personal_movies->total))
+            @if (count($personal_movies) > 0)
                 @foreach ($personal_movies as $movie)
                     <tbody class="text-xl">  
                         <tr class=" hover:bg-yellow-500 rounded border-collapse border border-black">
