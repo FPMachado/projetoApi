@@ -16,7 +16,7 @@
                 <th scope="col" class="py-3 px-3">Opções</th>
             </tr>
         </thead>
-        @if (!empty($users->total))
+        @if (count($users) > 0)
             @foreach ($users as $user)
                 <tbody class="text-xl border-collapse border border-black">  
                     <tr class=" hover:bg-yellow-500 rounded border-collapse border border-black divide-x divide-black">

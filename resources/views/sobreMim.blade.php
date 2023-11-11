@@ -5,21 +5,25 @@
         <div class="grid justify-items-center px-3 py-3">
             <img class="rounded-full shadow-2xl md: w-64" src="{{ url('storage/minha-foto.jpg') }}" alt="">
         </div>
-        <div class="container mx-auto py-2 w-full bg-gray-700 rounded-lg mt-3">
+        <div class="container mx-auto py-2 px-3 w-full bg-gray-700 rounded-lg mt-3">
             <h1 class='text-yellow-500 text-3xl text-center'>FILIPE PIRES MACHADO</h1>
-            <?php $idade = (date('Y') - 1997)?>
             <?php $tempoTrabalho = (date('Y') - 2016)?>
-            <span>
+            <span style="margin: 5px;">
                 <p>
-                    Olá, bem vindo ao meu portifólio. 
+                    Olá! Sou Filipe Pires Machado, um entusiasta da programação dedicado a transformar ideias em código eficiente e soluções inovadoras. Minha jornada no desenvolvimento de software é orientada pelo constante desejo de aprender e aprimorar minhas habilidades.
                 </p>
                 <p>
-                    Me chamo Filipe Pires Machado, atualmente tenho <?= $idade ?> anos e moro no Rio de Janeiro,
-                    tenho formação técnica em informática e sou graduado em Sistemas de informação, tenho <?= $tempoTrabalho ?> ano de experiência nessa área
-                    de tecnologia. E desde o início do curso técnico me apaixonei especificamente pela área de programação onde.
+                    Atualmente, estou embarcando na emocionante jornada de estudos para me especializar em Laravel, a robusta estrutura PHP. Acredito que esta especialização abrirá novas possibilidades para criar aplicativos web escaláveis e de alta qualidade. Com experiência em <b>Programação Web, Banco de dados, versionamento de código</b>, desenvolvi uma abordagem prática para resolver problemas complexos e entregar projetos excepcionais.
                 </p>
                 <p>
-                    Pretendo me especializar na linguagem PHP e no framework Laravel
+                    Minha filosofia de desenvolvimento não se limita apenas ao código eficiente; envolve também compreender as necessidades do cliente e criar soluções que superem expectativas. Estou comprometido com o aprendizado contínuo, explorando novas funcionalidades do Laravel e acompanhando as últimas tendências da indústria.
+                </p>
+                <p>
+                    Além do meu amor pela programação, sou extremamente compromotido com as tarefas que estão sobre minha responsabilidade e gosto sempre de discutir funcionalidades extras para esta, o que contribui para minha perspectiva única no desenvolvimento de software. Estou entusiasmado com o desafio futuro de me especializar plenamente em Laravel e confiante de que esta jornada de aprendizado trará benefícios significativos aos futuros projetos que abraçarei.
+                </p>
+                <p>
+                   Se você está em busca de um desenvolvedor dedicado, apaixonado pela criação de experiências digitais excepcionais, estou pronto para enfrentar novos desafios e contribuir para o sucesso do seu projeto.
+
                 </p>
             </span>
 

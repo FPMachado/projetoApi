@@ -49,7 +49,7 @@ class PersonalListController extends Controller
     public function search(Request $request)
     {
         $user = auth()->user()->id;
-        $personal_movies = DB::select("select movies.*, personal_list.id as personal_list_id, personal_list.note from movies inner join personal_list on personal_list.movie_id = movies.id where movies.name like '%{$request->pesquisa}%' and personal_list.user_id = {$user}");
+        $personal_movies = DB::select("select movies.*, personal_list.id as personal_list_id, personal_list.note, personal_list.assisted_in from movies inner join personal_list on personal_list.movie_id = movies.id where movies.name like '%{$request->pesquisa}%' and personal_list.user_id = {$user}");
         if(empty($personal_movies)){
             return view('personal_list.personal-list', compact('personal_movies'));
         }

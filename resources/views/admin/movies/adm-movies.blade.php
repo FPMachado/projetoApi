@@ -15,7 +15,7 @@
                 <th scope="col" class="py-3 px-3">Opções</th>
             </tr>
         </thead>
-        @if (!empty($movies->total))
+        @if (count($movies) > 0)
             @foreach ($movies as $movie)
                 <tbody class="text-xl border-collapse border border-black">  
                     <tr class=" hover:bg-yellow-500 rounded border-collapse border border-black divide-x divide-black">
