@@ -1,6 +1,6 @@
 <?php
-
 namespace App\Http\Controllers\Auth;
+ini_set('display_errors', true);
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
+use Illuminate\Validation\ValidationException;
 
 class RegisteredUserController extends Controller
 {
@@ -33,24 +34,29 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'name'      => ['required', 'string', 'max:255'],
-            'last_name' => ['nullable', 'string', 'max:255'],
-            'email'     => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password'  => ['required', 'confirmed',  Rules\Password::defaults()],
-        ]);
-       
-        $user = User::create([
-            'name'      => $request->name,
-            'last_name' => $request->last_name,
-            'email'     => $request->email,
-            'password'  => Hash::make($request->password),
-        ]);
+        try {
+            $request->validate([
+                'name'      => ['required', 'string', 'max:255'],
+                'last_name' => ['nullable', 'string', 'max:255'],
+                'email'     => ['required', 'string', 'email', 'max:255', 'unique:users'],
+                'password'  => ['required', 'confirmed',  Rules\Password::defaults()],
+            ]);
 
-        event(new Registered($user));
-
-        Auth::login($user);
-
-        return redirect(RouteServiceProvider::INDEX)->with('success', "Usuário cadastrado com sucesso!");
+            $user = User::create([
+                'name'      => $request->name,
+                'last_name' => $request->last_name,
+                'email'     => $request->email,
+                'password'  => Hash::make($request->password),
+            ]);
+    
+            event(new Registered($user));
+    
+            Auth::login($user);
+    
+            return redirect(RouteServiceProvider::INDEX)->with('message', "Usuário cadastrado com sucesso!");
+            
+        } catch (ValidationException $th) {
+            return redirect('/login')->withErrors($th->validator->getMessageBag());
+        }
     }
 }

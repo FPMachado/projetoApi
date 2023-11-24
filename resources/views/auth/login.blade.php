@@ -12,7 +12,7 @@
                 <hr class="mt-3">
                 <div class="mt-3">
                     <label for="email" class="block text-base mb-2 font-semibold">E-mail</label>
-                    <input type="email" name="email" class="border w-full text-base px-2 py-1 rounded-md focus:outline-none focus:ring-0 focus:border-yellow-400" placeholder="Insira seu e-mail"/>
+                    <input type="email" name="email" class="border w-full text-base px-2 py-1 rounded-md focus:outline-none focus:ring-0 focus:border-yellow-400" value="{{ !empty($email) ? $email : old('email')}}" placeholder="Insira seu e-mail"/>
                 </div>
 
                 <div class="mt-3">
