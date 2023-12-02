@@ -29,7 +29,7 @@
                     </li> 
                 @endif
                 <li class="mx-4 my-6 md:my-0">
-                    <a href="" class="text-xl hover:text-yellow-300 duration-500">Documentação</a>
+                    <a href="{{url('storage/Manual_projeto_api.pdf')}}" class="text-xl hover:text-yellow-300 duration-500">Documentação</a>
                 </li> 
                 <li class="mx-4 my-6 md:my-0">
                     <a href=" {{route('sobreMim')}} " class="text-xl hover:text-yellow-300 duration-500">Sobre Mim</a>
